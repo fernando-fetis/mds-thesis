@@ -1,0 +1,42 @@
+\documentclass{book}
+
+% Archivos auxiliares:
+\input{others/packages}
+\input{others/config}
+\input{others/shortcuts}
+
+% Archivo de bibliografía:
+\addbibresource{others/references.bib}
+
+\begin{document}
+
+% Primeras páginas:
+\frontmatter
+\include{others/titlepage}
+\include{others/abstract}
+\include{others/dedication}
+
+\begingroup
+\hypersetup{hidelinks}
+\tableofcontents
+\listoffigures
+\endgroup
+
+\mainmatter
+
+% Capítulos:
+\include{chapters/introduction}
+\include{chapters/dm}
+\include{chapters/ot}
+\include{chapters/eot_sbp}
+\include{chapters/conclusion}
+
+% Apéndice:
+\appendix
+\include{chapters/appendix}
+
+% Bibliografía:
+\printbibliography
+\addcontentsline{toc}{chapter}{Bibliografía}
+
+\end{document}

@@ -1,0 +1,510 @@
+
+\chapter*{Apéndice}
+
+\addcontentsline{toc}{chapter}{Apéndice}
+\stepcounter{chapter}
+
+\label{measure_theory}
+
+\section{Medidas de probabilidad}
+
+La teoría de la medida es una rama del análisis matemático que permite tener un marco teórico robusto para el estudio de las probabilidades, el cual muchas veces se vuelve necesario al trabajar con variables aleatorias continuas. En esta sección se entregará la intuición de algunos resultados necesarios para este trabajo, sin entrar en detalles técnicos como la construcción de la integral de Lebesgue o la medibilidad de las funciones, lo que extendería considerablemente la sección y desviaría el foco del trabajo. En consecuencia, muchos de los resultados entregados no son del todo riguroso pero sí son suficientes para el desarrollo de la teoría del transporte óptimo.
+
+En la teoría de la medida se definen de forma precisa dos conjuntos los cuales se suelen ver como un único conjunto en la interpretación clásica de las probabilidades. Estos conjuntos corresponden al conjunto muestral $\xspace$ y el espacio de eventos $\salgebra$. Usando como ejemplo el experimento de lanzar dos monedas, el espacio muestral corresponde a todos los posibles resultados del experimento, es decir $\xspace=\{(C,C),(C,S),(S,C),(S,S)\}$, mientras que el espacio de eventos corresponde a diferentes subconjuntos del espacio muestral $\xspace$ que puedan ser de interés para calcularles una probabilidad. Por ejemplo, un evento $A$ podría ser que la primera moneda sea $C$ (i.e., $A=\{(C,C),(C,S)\}\subset\power{\xspace}$\footnote{Para un conjunto arbitrario $\xspace$, el conjunto potencia (también llamado conjunto de las partes) corresponde al conjunto de todos los subconjuntos posibles de $\xspace$: $\power{\xspace}:=\{A:\,A\subset\xspace\}$. En particular, $\xspace\in\power{\xspace}$ y $\emptyset\in\power{\xspace}$.}) mientras que otro evento $B$ puede ser que ambas monedas sean $S$ (i.e., $B=\{(S,S)\}\subset\power{\xspace}$). De este modo, para este caso particular, los posibles eventos de este experimento son las diferentes combinaciones de resultados en $\xspace$ que se pueden obtener:
+
+\begin{align*}
+    \salgebra = \{ &                                                                                                                       \\
+                   & \{\},                                                                                                                 \\
+                   & \{(C,C)\},\, \{(C,S)\},\, \{(S,C)\},\, \{(S, S)\},                                                                    \\
+                   & \{(C,C), (C,S)\},\, \{(C,C), (S,C)\},\, \{(C,C), (S,S)\},\, \{(C,S), (S,C)\},\, \{(C,S), (S,S)\},\, \{(S,C), (S,S)\}, \\
+                   & \{(C,C), (C,S), (S,C)\},\, \{(C,C), (C,S), (S,S)\},\, \{(C,C), (S,C), (S,S)\},\, \{(C,S), (S,C), (S,S)\},             \\
+                   & \{(C,C),(C,S),(S,C),(S,S)\}                                                                                           \\
+    \}             &
+\end{align*}
+
+Notar que, el espacio muestral completo $\xspace$ también es por si solo un evento, al igual que su complemento $\{\}$ (evento vacío). Es lógico esperar que para alguna noción de probabilidad, la probabilidad del evento $\xspace\in\salgebra$ sea $1$, mientras que la probabilidad del evento vacío $\emptyset\in\salgebra$ se espera que sea 0. Además, en este espacio de eventos $\salgebra$ hay otros eventos que también tiene sentido asignarles probabilidad 0 como por ejemplo el evento $\{(C,C), (S,S)\}$. En teoría de la medida, al conjunto de eventos $\salgebra$ se le denomina $\sigma$-álgebra y es sobre los elementos de este conjunto donde define una noción de probabilidad, lo cual es más razonable que asignarle probabilidades a los elementos del espacio muestral $\xspace$ directamente. Por otra parte, la noción de probabilidad que se asigna sobre los elementos de $\salgebra$ debe ser consistente con lo que uno esperaría de la interpretación clásica de las probabilidades. En particular, la probabilidad del evento formado por dos eventos disjuntos (i.e., cuya intersección es vacía) debe ser la suma de la probabilidad de los eventos individuales.
+
+Con las observaciones anteriores es natural construir las siguientes definiciones:
+
+\begin{defn}[$\sigma$-álgebra]
+    \label{defn:sigma_algebra}
+
+    Dado un conjunto $\xspace$ no necesariamente finito, otro conjunto $\salgebra\subset\power{\xspace}$ se dirá $\sigma$-álgebra (en $\xspace$) si:
+
+    \begin{itemize}
+        \item $\xspace\in\salgebra$.
+        \item Si $A\in\salgebra$ entonces $A^c := \{w\in\xspace :\, w\not\in A\}\in\salgebra$.
+        \item Si $(A_n)_{n\in\N}\subset\salgebra$ entonces $\bigcup\limits_{n\in\N} A_n \in\salgebra$.
+    \end{itemize}
+
+    Por último, a los elementos $A\in\salgebra$ se les denomina \textit{conjuntos medibles} y al par $(\xspace,\salgebra)$ se le denomina \textit{espacio medible}.
+
+\end{defn}
+
+En el marco probabilístico, la primera condición indica que el espacio muestral $\xspace$ es un evento por si solo. La segunda condición exige que para todo evento, el evento complementario (que se puede entender como la negación del evento original) también es efectivamente un evento. Por otra parte, la última condición indica que unir una cantidad numerable de eventos es también un evento.
+
+\subsection{Definición de medida}
+\label{measure_theory/definition}
+
+Para asignar una probabilidad a los eventos de una $\sigma$-álgebra se utiliza la noción de medida, la cual se extiende más allá del marco probabilístico:
+
+\begin{defn}[medida]
+    \label{defn:measure}
+
+    Dado un espacio medible $(\xspace,\salgebra)$, una medida sobre este espacio es una función $\mu:\salgebra\to\R\cup{\infty}$ que además cumple los axiomas de Kolmogorov:
+
+    \begin{itemize}
+        \item Positividad: $\mu(A)\geq 0$\footnote{Si bien es posible trabajar con valores negativos (medidas con signo), en este trabajo se asumirá siempre la positividad.} para todo conjunto medible $A\in\salgebra$.
+        \item Anulación en el vacío: $\mu(\emptyset) = 0$.
+        \item $\sigma$-aditividad: si $(A_n)_{n\in\N}\subset\salgebra$ es una familia de conjuntos medibles disjuntos de a pares\footnote{Es decir, $A_i\cap A_j = \emptyset,\,\forall i\neq j$.}, entonces:
+
+            \begin{equation*}
+                \mu\parent{\bigcup_{n\in\N} A_n} = \sum_{n\in\N} \mu(A_n)
+            \end{equation*}
+
+    \end{itemize}
+
+    A la tupla $(\xspace,\salgebra,\mu)$ se le denomina \textit{espacio de medida}. Si $\mu(\xspace)=1$ se dice que $\mu$ es una \textit{medida de probabilidad} y $(\xspace,\salgebra,\mu)$ se denomina \textit{espacio de probabilidad}.
+\end{defn}
+
+A lo largo de este trabajo, $\mathcal{M}_+(\xspace)$ representará el conjunto de medidas definidas sobre el espacio medible $(\xspace,\salgebra)$. Del mismo modo, $\probmeasure{\xspace}\subset\mathcal{M}_+(\xspace)$ representará el conjunto de medidas de probabilidad definidas en $(\xspace,\salgebra)$. Por otra parte, este capítulo está enfocado en formular la teoría únicamente para medidas de probabilidad ya que este es un marco de trabajo lo suficientemente general y está en línea con lo realizado en el \autoref{dm}. Debido a esto, al hablar de medidas siempre se estará haciendo referencia a medidas (positivas) de probabilidad. Sin embargo, la mayor parte de los resultados se puede extender sin mayores cambios al conjunto de medidas positivas $\mathcal{M}_+(\xspace)$ e incluso al conjunto de medidas con signo. Por último, es importante tener en cuenta que dada una medida positiva finita $\mu\in\posmeasure{\xspace}$ (i.e., $\mu(\xspace)=M<\infty$), siempre es posible construir una medida de probabilidad mediante normalización (i.e., $\mu_{\operatorname{probabilidad}} = \frac{1}{M}\mu$).
+
+\subsubsection{Medidas en espacios discretos}
+\label{measure_theory/definition/discrete}
+
+Si el conjunto muestral $\xspace$ es finito, entonces se dirá que se está trabajando sobre un \textit{espacio discreto}. En este caso, es usual considerar la $\sigma$-álgebra de las partes, por lo que el espacio medible en el caso discreto es $\parent{\xspace,\power{\xspace}}$. Por lo tanto, si $\xspace=\{x_1,\ldots,x_n\}$, las medidas (discretas) de probabilidad sobre este espacio son siempre de la forma
+
+\begin{equation}
+    \label{eq:discrete_measure_defn}
+    \mu=\sum_{i=1}^n \lambda_i \,\delta_{x_i}
+\end{equation}
+
+donde $\delta_{x_i}$ es un delta de Dirac\footnote{Es decir, $\delta_{x_i}(A)$ vale 1 si $x_i\in A$ y 0 si no.} y $\lambda_i\geq 0$ indica la probabilidad (también llamada \textit{masa}) que la medida $\mu$ le entrega al elemento $\xspace_i\in\xspace$. Dado que $\mu$ debe ser medida de probabilidad, necesariamente $\sum_{i=1}^n \lambda_i = 1$. Al vector $\lambda\in\R_+^n$ se le denomina \textit{vector de probabilidad asociado a $\mu$} y determina totalmente la medida $\mu\in\probmeasure{\xspace}$.
+
+El conjunto de todos los vectores de probabilidad se denomina \textit{simplex de probabilidad} y cada vector de este conjunto determina de manera biunívoca una medida de probabilidad en el espacio medible discreto mediante \eqref{eq:discrete_measure_defn}:
+
+\begin{equation}
+    \label{eq:simplex}
+    \Sigma_n := \left\{\lambda\in\R^n_+\,:\norm{\lambda}_1=\sum_{i=1}^n \lambda_i = 1 \right\}
+\end{equation}
+
+\subsubsection{Medidas en espacios continuos}
+\label{measure_theory/definition/continuous}
+
+De acuerdo a la \autoref{defn:measure}, una medida $\mu$ no es necesariamente finita, lo que permite extender la teoría a otros tópicos no relacionados directamente con la teoría de probabilidades. Por ejemplo, en el plano $\R^2$ se puede definir, naturalmente, la medida de Lebesgue, la cual asigna a cada figura en el plano su respectiva área. Esta medida no es finita (se pueden hacer figuras tan grandes como se quiera) ni tiene interpretación probabilística.
+
+Para poder definir la medida estándar en $\xspace=\R^d$ es necesario primero indicar cuál es la $\sigma$-álgebra adecuada en este espacio. Si bien en el caso discreto es usual considerar la $\sigma$-álgebra de las partes (donde todos los subconjuntos de $\xspace$ son conjuntos medibles), en el caso continuo esto genera ciertos problemas patológicos que sugieren definir una $\sigma$-álgebra más apropiada. La $\sigma$-álgebra usual en estos casos, denotada por $\borel{\R^d}$, es la menor $\sigma$-álgebra que contiene todos los conjuntos abiertos de $\R^d$ y se denomina \textit{$\sigma$-álgebra de los borelianos de $\R^d$}. Si bien $\borel{\R^d}\subsetneq\power{\R^d}$, esta $\sigma$-álgebra es lo suficientemente grande y general como para contener todos los subconjuntos de $\R^d$ considerados en la práctica. Más aún, encontrar un subconjunto de $\R^d$ que no pertenezca a $\borel{\R^d}$ (i.e., que no sea medible), es un problema no trivial.
+
+Con respecto a la medida que se considera en el escenario continuo, para el caso $d=1$ es usual definir, bajo la $\sigma$-álgebra $\borel{\R}$, la medida $\mu\in\posmeasure{\R}$ definida en cada intervalo $(a,b]\in\borel{\R}$ como su largo (i.e., $\mu((a,b])=b-a$\footnote{El teorema de Hahn-Carathéodory garantiza que es suficiente definir una medida en intervalos de este tipo para poder extenderla de forma única a todos los elementos de $\borel{\R}$.}). Esta medida es conocida como medida de Lebesgue y se considera la medida por defecto en $\R$. De forma equivalente, se puede construir la medida de Lebesgue en $\R^d$ (bajo la $\sigma$-álgebra $\borel{\R^d}$), donde la medida de un conjunto medible $A\in\borel{\R^d}$ es precisamente su volumen en el espacio.
+
+\subsubsection{Medidas en espacios más generales}
+\label{measure_theory/definition/general}
+
+La teoría del transporte óptimo y del puente de Schrödinger en el \autoref{eot_sbp} se puede extender sin mayores cambios a espacios más generales que el caso discreto y continuo. Por lo tanto, por completitud, se entregarán las definiciones precisas para estos casos.
+
+Un espacio topológico $(\xspace,\tau)$ se dirá \textit{separable} si posee un subconjunto denso numerable. Si existe una métrica $d:\xspace\times\xspace\to\R_+$ tal que su topología inducida es igual a $\tau$, el espacio topológico se dirá \textit{metrizable}. Si $d$ además es una distancia completa (en el sentido de Cauchy), $(\xspace,\tau)$ se dirá \textit{completamente metrizable}. Con esto, un \textit{espacio polaco} es un espacio topológico completamente metrizable y separable.
+
+Al trabajar un espacio topológico $(\xspace,\tau)$ como un espacio medible, siempre se considerará, implícitamente, la $\sigma$-álgebra de sus \textit{borelianos}, $\borel{\xspace}$, la cual se define como la menor $\sigma$-álgebra que contiene a $\tau$. Así, una medida sobre esta $\sigma$-álgebra se denominará \textit{medida de Borel}.
+
+En transporte óptimo y en teoría de probabilidades en general, es usual enunciar los teoremas asumiendo que los espacios involucrados son, al menos, espacios polacos, ya que este tipo de espacios es lo suficientemente general como para cubrir un amplio espectro de problemas, y evita algunos casos patológicos encontrados en formulaciones más generales. En particular, tanto el caso discreto $\xspace=\{x_1,\ldots,x_n\}$ como el caso continuo $\xspace=\R^d$ son espacios polacos.
+
+\subsection{Existencia de funciones de densidad}
+\label{measure_theory/density}
+
+Cuando se consideran variables aleatorias con valores en $\R^d$ (como las estudiadas en el \autoref{dm}), estas inducen naturalmente una medida de probabilidad en $\R^d$, donde la masa que asigna dicha medida a cada conjunto medible $A\in\borel{\R^d}$ corresponde a la probabilidad de que la variable aleatoria tome ese valor. Por ejemplo, dada una variable aleatoria gaussiana $z\sim\gaussian{0}{1}$, la medida que esta induce sobre $\R$ viene dada por:
+
+\begin{equation}
+    \label{eq:density_example}
+    \mu_z(A) = \int_A p_z(x) \d x
+\end{equation}
+
+donde $A\in\borel{\R^d}$ es un conjunto medible de $\R$ (por ejemplo, un intervalo) y $p_z$ es la función de densidad de una variable aleatoria gaussiana estándar. En este caso, se dice que la medida $\mu_z\in\probmeasure{\R}$ es \textit{absolutamente continua} con respecto a la medida de Lebesgue$\d x$ ya que existe una función de densidad $p_z$ que permite escribir $\mu_z$ como una integral con respecto a la medida de Lebesgue.
+
+Sin embargo, esto no es siempre posible. Por ejemplo, si la variable aleatoria $z$ concentrase toda su masa en un único punto $x_0\in\R$, no sería posible encontrar una función $p_z:\R\to\R$ para obtener la igualdad dada en \eqref{eq:density_example} debido a que la integral de Riemman (vinculada a la medida de Lebesgue) no es capaz de asignarle masa a puntos individuales ya que, la medida de Lebesgue del intervalo formado por un único punto tiene medida cero (debido a que tiene longitud cero).
+
+Este problema de la no existencia de una función de densidad se tendrá siempre que la medida a la que se le busca densidad le asigne masa a elementos demasiado pequeños con respecto a la medida con la que se está comparando. Esta observación motiva la siguiente definición:
+
+\begin{defn}[continuidad absoluta de medidas]
+    \label{defn:absolute_continuity_measures}
+    Dado un espacio medible $(\xspace,\salgebra)$ y dos medidas de probabilidad $\mu,\nu\in\probmeasure{\xspace}$, se dirá que $\mu$ es absolutamente continua (a.c.) con respecto a $\nu$ si
+
+    \begin{equation*}
+        \mu(A) = 0 \implies \nu(A)=0,\quad \forall A\in\salgebra
+    \end{equation*}
+
+    Esta propiedad se denotará como $\mu\ll\nu$.
+\end{defn}
+
+En los ejemplos anteriores, la medida asociada a la variable aleatoria gaussiana es absolutamente continua con respecto a la medida de Lebesgue, mientras que la medida que concentra toda su masa en un punto no lo es.
+
+El siguiente resultado indica que si $\mu\ll\nu$, entonces $\mu$ posee una función de densidad con respecto a $\nu$:
+
+\begin{teo}[Radon-Nikodym]
+    \label{teo:radon_nikodym}
+    Sea $(\xspace,\salgebra)$ un espacio medible y $\mu,\nu\in\probmeasure{\xspace}$ dos medidas de probabilidad con $\mu\ll\nu$. Entonces, existe una función $f:\xspace\to\R_+$ denominada \textit{función de densidad}, tal que:
+
+    \begin{equation*}
+        \mu(A) = \int_\xspace f \d\nu, \quad\forall A\in\salgebra
+    \end{equation*}
+
+    La función $f$ es única y es denominada \textit{derivada de Radon-Nikodym de $\mu$ con respecto a $\nu$}, por lo que se suele denotar como $\frac{\d\mu}{\d\nu}$.
+\end{teo}
+
+
+
+\subsection{Medida push-forward}
+\label{measure_theory/others/push_forward}
+
+Para concluir esta sección, se revisará el concepto de \textit{medida push-forward}, el cual consiste en traspasar la medida desde un espacio de probabilidad a un espacio medible cualquiera mediante una función entre ambos espacios. Esta definición será crucial al momento de definir el problema de Monge en la próxima sección.
+
+\begin{defn}[Medida push-forward]
+    \label{defn:push_forward}
+    Sea $T:\xspace\to\yspace$ una función entre el espacio de probabilidad $(\xspace,\salgebra_\xspace,\mu)$ y el espacio medible $(\yspace,\salgebra_\yspace)$. La medida push-forward $T_\#\mu\in\probmeasure{\yspace}$ que induce $\mu$ sobre $\yspace$ mediante $T$ se define como:
+
+    \begin{equation*}
+        T_\#\mu(B):= (T_\#\mu)(B) = \mu\parent{T^{-1}(B)}
+        = \mu\parent{\{x\in\xspace\,:\, T(x)\in B\}},
+        \quad \forall B\in \salgebra_\yspace
+    \end{equation*}
+\end{defn}
+
+Es decir, la función $T:\xspace\to\yspace$ construye una medida en el espacio de llegada a partir de la medida en el espacio de origen mediante preimágenes.
+Notar que si $T:\xspace\to\yspace$ es inyectiva, la definición anterior es equivalente a que $\mu(A) = \nu(T(A)),\,\forall A\in\salgebra_\xspace$.
+
+Se tiene la siguiente caracterización para saber si una medida es efectivamente la medida push-forward:
+
+\begin{prop}
+    \label{prop:push_forward_characterization}
+    Sea $T:\xspace\to\yspace$ una función entre el espacio de probabilidad $(\xspace,\salgebra_\xspace,\mu)$ y el espacio medible $(\yspace,\salgebra_\yspace)$. Entonces, $\nu\in\probmeasure{\yspace}$ es la medida push-forward inducida por $\mu$ mediante $T$ si y solo si
+
+    \begin{equation*}
+        \int_\yspace h(y)\d\nu = \int_\xspace h(T(x))\d\mu,
+        \quad\forall h\in\mathcal{C}(\yspace)
+    \end{equation*}
+
+    donde $\mathcal{C}(\yspace)$ representa el conjunto de funciones $h:\yspace\to\R$ continuas en $\yspace$.
+\end{prop}
+
+Una forma de interpretar la medida push-forward es notando que el mapa $T:\xspace\to\yspace$ es una función que traslada puntos entre dos espacios de medida, mientras que $T_\#:\posmeasure{\xspace}\to\posmeasure{\yspace}$ es una extensión de $T$ que traslada medidas en $\xspace$ a medidas en $\yspace$.
+
+Se tienen las siguientes propiedades de las medidas push-forward:
+
+\begin{prop}
+    \label{prop:push_forward_properties}
+    Sean $\xspace$ e $\yspace$ espacios medibles y $\mu\in\probmeasure{\xspace}$. Las siguientes afirmaciones son ciertas:
+
+    \begin{itemize}
+        \item El operador $T_\#:\probmeasure{\xspace}\to\probmeasure{\yspace}$ es lineal:
+
+              \begin{equation*}
+                  T_\#(\mu_1+\mu_2)=T_\#\mu_1 + T_\#\mu_2
+              \end{equation*}
+
+              donde $\mu_1,\mu_2\in\probmeasure{\xspace}$.
+
+        \item Fórmula de cambio de variable:
+
+              \begin{equation*}
+                  \int_\yspace f(y)\d\,(T_\#\mu)(y) = \int_\xspace f(T(x)) \d\mu(x)
+              \end{equation*}
+
+        \item Composición de mapas de transporte:
+
+              \begin{equation*}
+                  (S\circ T)_\#\mu = S_\#(T_\#\mu)
+              \end{equation*}
+    \end{itemize}
+\end{prop}
+
+La demostración de estas propiedades se puede encontrar en \cite{Thorpe2018}.
+
+\section{Procesos de Îto}
+\label{sde}
+
+En esta sección se dará una introducción informal a las ecuaciones diferenciales estocásticas, mostrando por qué es necesario construir una nueva teoría para su desarrollo. Un desarrollo más riguroso se puede encontrar en \cite{sarkkaSolin2019}, \cite{evans2013introduction} y \cite{karatzas1988brownian}. Para comenzar, se entrega la siguiente jerarquía para los procesos estocásticos, la cual es importante para tener en cuenta las propiedades de los procesos que se están utilizando tanto en los modelos de difusión como en la formulación continua del transporte óptimo y el problema de Schrödinger en los \autoref{ot} y \autoref{eot_sbp} respectivamente:
+
+\begin{itemize}
+    \item Un proceso estocástico es cualquier proceso aleatorio $x=(x_t)_{t\geq 0}$ indexado por el tiempo. Entre estos procesos están los procesos de Markov, los cuales son procesos cuyo futuro solo depende del presente y pueden ser procesos a tiempo discreto o a tiempo continuo. Debido a esto último, no todos los procesos de Markov tienen necesariamente una función de densidad marginal (ver \autoref{measure_theory/density}).
+    \item Dentro de los procesos de Markov están los procesos de Îto, los cuales son los procesos de Markov a tiempo continuo que se pueden representar mediante una ecuación diferencial estocástica (SDE). Por otra parte, no todos los procesos de Markov a tiempo continuo se pueden representar mediante una SDE (por ejemplo, un proceso de Poisson es un proceso de Markov pero no un proceso de Îto).
+    \item Un subconjunto particular de los procesos de Îto son los procesos de difusión, los cuales son procesos de Îto guiados por un movimiento browiano (i.e. poseen una SDE de la forma $\mu(x_t,t)dt+\sigma(x_t,t)dW$, ver \autoref{defn:brownian_motion}). En particular, estos procesos tienen trayectorias continuas. Un proceso de Îto que no es un proceso de difusión es, por ejemplo, un proceso de Lévy, los cuales tienen SDEs de la forma $\d x_t = (\mu \d t + \sigma \d W_t) + \d J_t$ donde el primer sumando es la parte difusiva y el segundo sumando es el que genera las discontinuidades en las trayectorias. En este trabajo, dado que se consideran únicamente trayectorias continuas, se utilizarán equivalentemente los términos \textit{proceso de Îto} y \textit{proceso de difusión}.
+\end{itemize}
+
+Las SDEs son una herramienta poderosa para modelar sistemas dinámicos influenciados por componentes aleatorias. Estos modelos son esenciales en diversas áreas como física, biología, economía e ingeniería, donde los sistemas estudiados no pueden ser descritos adecuadamente solo por ecuaciones diferenciales ordinarias (ODEs) debido a la presencia de ruido o incertidumbre.
+
+Para motivar su estudio, se puede considerar un sistema físico en $\R^d$ que evoluciona durante un intervalo de tiempo $[t_0,T]$ de acuerdo a la siguiente dinámica:
+
+\begin{equation}
+    \frac{\d x(t)}{\d t} = \mu(x(t),t) + \sigma(x(t),t)w(t)
+    \label{eq:sde_as_derivative}
+\end{equation}
+
+Donde $\mu:\R^d\times [t_0,T]\to\R^d$ es un forzante o estímulo determinista y $\sigma:\R^d\times [t_0,T]\to\matrixspace{d,d}{\R}$ es un factor matricial del forzante $\sigma w$, el cual depende de una cantidad aleatoria $w:[0,T]\to\R^d$. De este modo, el sistema $x$ tiene una componente evolutiva fija y otra estocástica, la cual puede representar incertidumbre sobre el forzante total o estímulos externos que no están considerados en el forzante $\mu$.
+
+En el campo de las SDEs, la función $\mu$ es denominada \textit{drift}, mientras que la función $\sigma$ se conoce como \textit{dispersión} o \textit{volatilidad}. El factor estocástico $w$ es un término que representa la incertidumbre y es comúnmente considerado como \textit{ruido blanco}. Para hacer más preciso este último término, se definirá de la siguiente forma:
+
+\begin{defn}[ruido blanco]
+    El ruido blanco es un proceso estocástico $w=(w_t)_{t\geq 0}$ en $\R^d$ con las siguientes propiedades:
+
+    \begin{itemize}
+        \item Para dos tiempos distintos $t_1, t_2>0$, las variables aleatorias $w_{t_1}$ y $w_{t_2}$ son independientes.
+        \item El mapeo $t\mapsto w(t)$ es un proceso gaussiano con media nula y correlación $\E{}{w(t_1)w(t_2)^\top}=\delta(t_1-t_2)Q$, donde $Q$ se conoce como la densidad espectral del proceso.
+    \end{itemize}
+\end{defn}
+
+De la definición se obtiene que las trayectorias $t\mapsto w(t)$ son discontinuas casi seguramente (c.s.) y que el ruido blanco es no acotado. Estas propiedades no permiten analizar la ecuación diferencial definida en \eqref{eq:sde_as_derivative} de una forma usual ya que no cumple los requisitos del teorema clásico de existencia y unicidad para ODEs:
+
+\begin{teo}[Cauchy-Picard-Lindelöf]
+    \label{teo:cauchy_picard}
+    Sea $I\subset\R$ un intervalo cerrado y acotado y $f:I\times\R^d\to\R$ una función continua y Lipschitz con respecto a la segunda variable. Entonces, para cada $t_0\in I$ y cada $x_0\in\R^d$ existe una única solución $x:I\to\R^d$ de clase $\mathcal{C}^1$ del problema de Cauchy
+
+    \begin{equation*}
+        \begin{cases}
+            x'(t) = f(t,x(t)), & \forall t\in I \\
+            x(t_0) = x_0
+        \end{cases}
+    \end{equation*}
+
+\end{teo}
+
+Dada la discontinuidad casi segura del ruido blanco, no se cumple la continuidad del lado derecho de \eqref{eq:sde_as_derivative} requerida en el \autoref{teo:cauchy_picard}. Sin embargo, es posible realizar iteraciones de Picard análogas a la forma clásica para obtener la existencia y unicidad de la solución en el caso estocástico.
+
+Como se verá en la siguiente subsección, este tipo de ecuaciones tampoco permitirán utilizar las integrales clásicas para este tipo de ecuaciones, por lo que se necesitará definir un nuevo concepto de integral.
+
+\subsection{Integral de Itô}
+La integral de Itô es un concepto fundamental en el cálculo estocástico, particularmente en el estudio de SDEs. A diferencia de las integrales de Riemann o de Lebesgue, la integral de Itô está diseñada para integrar con respecto a procesos estocásticos, especialmente con respecto al movimiento browniano, el cual se define a continuación.
+
+\begin{defn}[movimiento browniano estándar]
+    \label{defn:brownian_motion}
+    El movimiento browniano o proceso de Wiener es un proceso estocástico $W=(W_t)_{t\geq0}$ en $\R^d$ que está caracterizado \footnote{Existen otras caracterizaciones equivalentes. Por ejemplo, se puede definir como el límite escalado de un paseo aleatorio (teorema de Donkster) o como una martingala continua con variación cuadrática (catecterización de Lévy).} por 4 propiedades:
+    \begin{itemize}
+        \item Inicio determinista: $W_0 = 0$ casi seguramente.
+        \item Incrementos independientes: para tiempos $t_1\leq t_2<t_3\leq t_4$, los incrementos $W_{t_2} - W_{t_1}$ y $W_{t_4} - W_{t_3}$ son independientes.
+        \item Incrementos gaussianos: para tiempos $t_1<t_2$, $W_{t_2} - W_{t_1}\sim\gaussian{0}{(t_2 - t_1)I_d}$.
+        \item Trayectorias continuas: el mapa $t\mapsto W_t$ es continuo casi seguramente.
+    \end{itemize}
+\end{defn}
+
+De esta definición, se observa que un movimiento browniano es un proceso gaussiano con función de media idénticamente nula y función de covarianza $K(t_1, t_2) = \min(t_1, t_2)\identity{d}$.
+
+Para resolver la ecuación diferencial definida en \eqref{eq:sde_as_derivative}, se podría tratar de integrar, al menos formalmente, dicha expresión en un intervalo de tiempo $[t_0, T]$. De esta forma:
+
+\begin{equation}
+    \label{eq:sde_formal_integration}
+    x_T - x_{t_0} = \int_{t_0}^T \mu(x_t,t)\d t + \int_{t_0}^T \sigma(x_t,t)w_t \d t
+\end{equation}
+
+La primera integral es una integral clásica y puede ser resuelta en el sentido de Riemann o en el sentido de Lebesgue. Por otra parte, la segunda no permite ninguna de las dos interpretaciones anteriores, en efecto:
+
+\paragraph{Como integral de Riemann-Darboux}
+Para una partición $\mathcal{P}=(t_k)_{k=0}^n$ del intervalo $[t_0, T]$, se pueden estudiar las sumas de Riemann asociadas al integrando $\sigma(x_t,t)w_t$, las cuales son de la forma
+
+\begin{equation*}
+    \sum_{k=1}^n \sigma\left(x(\tilde{t_k}),\tilde{t_k}\right)w\left(\tilde{t_k}\right) (t_k - t_{k-1})
+\end{equation*}
+
+donde $\tilde{t_k}\ = \sup\limits_{t\in [t_{k-1}, t_k]} \sigma(x_t,t)w_t$ en el caso de la suma superior y $\tilde{t_k}\ = \inf\limits_{t\in [t_{k-1}, t_k]} \sigma(x_t,t)w_t$ en el caso de la suma inferior. Dado que el ruido blanco es no acotado en cualquier intervalo, los tiempos $\tilde{t_k}$ no están definidos para ninguna partición $\mathcal{P}$ independientemente de que $\norm{\mathcal{P}} := \max_{1\leq k\leq n} t_k - t_{k-1}$ tienda a cero. De esta forma, no es posible definir la segunda integral en \eqref{eq:sde_formal_integration} en el sentido de Riemann.
+
+\paragraph{Como integral de Lebesgue}
+El incremento $w_t \d t$ en \eqref{eq:sde_formal_integration} corresponde precisamente al incremento de un movimiento browniano $W$. Tratando a este proceso como una medida de Lebesgue-Stieltjes\footnote{Formalmente esto no tiene sentido ya que las medidas son funciones deterministas.} del tipo $\mu_W((t_{k-1}, t_k]) = W_{t_k} - W_{t_{k-1}}$, la segunda integral en \eqref{eq:sde_formal_integration} vista en el sentido de Lebesgue toma la forma
+
+\begin{equation}
+    \label{eq:lebesgue_sde}
+    \int_{t_0}^T \sigma(x_t,t)w_t \d t = \int_{t_0}^T \sigma(x_t,t) \d W_t = \lim_{\norm{\mathcal{P}}\to 0} \sum_{k=1}^n \sigma\left(x(\tilde{t_k}),\tilde{t_k}\right) \left(W_{t_k} - W_{t_{k-1}}\right)
+\end{equation}
+
+Interpretar esta integral en el sentido de Lebesgue tampoco es posible ya que dicho límite no es único (el movimiento browniano no es de variación acotada). Por lo tanto, no es posible definir la integral estocástica en \eqref{eq:sde_formal_integration} en el sentido de Lebesgue. En particular, tampoco se podría definir como una integral de Riemann-Stieltjes. Sin embargo, de este análisis se rescata que $w_t \d t = \d W_t$, lo cual muchas veces es interpretado diciendo que el ruido blanco es la \textit{derivada} del movimiento browniano. Sin embargo, esto es únicamente a modo de interpretación ya que el movimiento browniano es no diferenciable casi en todas partes.
+
+En consecuencia, para poder darle sentido a la segunda integral en \eqref{eq:sde_formal_integration} es necesario poder definir una integral que permita diferenciales estocásticos. Para esto, se puede fijar la elección $\tilde{t_k} = t_k$ para lograr que el límite en \eqref{eq:lebesgue_sde} sí sea único (en media cuadrática). La construcción de esta nueva integral pasa a llamarse \textit{integral de Itô}\footnote{También es posible definir la integral de Stratonovich considerando a $\tilde{t_k}$ como el punto medio del intervalo $[t_{k-1}, t_k]$, la cual permite que las reglas del cálculo clásico sigan siendo válidas. Sin embargo, esta integral dificulta el análisis teórico ya que no cumple algunas propiedades esenciales que sí cumple la integral de Itô.}, la cual toma la siguiente forma:
+
+\begin{equation*}
+    \int_{t_0}^T \sigma(x_t,t) dW_t = \lim_{\norm{\mathcal{P}}\to 0} \sum_{k=1}^n \sigma\left(x(t_k),t_k\right) \left(W_{t_k} - W_{t_{k-1}}\right)
+\end{equation*}
+
+Bajo esta nueva integral, la ecuación diferencial inicial \eqref{eq:sde_as_derivative} se denotará como
+
+\begin{equation}
+    \label{eq:sde}
+    \d x_t = \mu(x_t,t)\d t + \sigma(x_t,t)\d W_t
+\end{equation}
+
+Y pasará a llamarse \textit{ecuación diferencial estocástica}, cuya solución corresponde al proceso estocástico dado por
+
+\begin{equation*}
+    x_t = x_{t_0} + \int_{t_0}^t \mu(x_s,s)\d s + \int_{t_0}^t \sigma(x_s,s) \d W_s
+\end{equation*}
+
+De aquí en adelante, cuando se hable de una SDE genérica se estará asumiendo que tiene la forma dada en \eqref{eq:sde}. Notar que la solución de una SDE corresponde a un proceso aleatorio, por lo que para obtener una trayectoria específica es necesario poder generar muestras a partir de su distribución. En la figura \ref{fig:appendix/ornstein_uhlenbeck} se observan algunas trayectorias generadas a partir de la solución de una SDE específica.
+
+Una herramienta fundamental para trabajar con SDEs es el lema o fórmula de Itô, el cual proporciona una manera de diferenciar funciones de procesos estocásticos. Esta fórmula es el análogo estocástico a la regla de la cadena en el cálculo clásico, y es crucial para manipular ecuaciones diferenciales estocásticas. En consecuencia, este resultado permite demostrar todos los resultados sobre SDEs utilizados a lo largo de este trabajo.
+
+A modo de completitud, se enunciará este resultado en el caso unidimensional ($d=1$):
+
+\begin{teo}[lema de Itô, caso escalar]
+    \label{teo:itos_formula}
+    Dado un proceso de Itô en $\R$, solución de la SDE $\d x_t = \mu(x_t,t)\d t + \sigma(x_t,t)\d W_t$ en el intervalo temporal $[t_0,T]$ y una función $\phi:\R\times [t_0,T]$ dos veces diferenciables, entonces, el proceso dado por $\phi_t = \phi(x_t,t)$ también es un proceso de Itô asociado a la SDE
+
+    \begin{equation}
+        \label{eq:itos_formula}
+        \d\phi_t = \left( \frac{\partial\phi}{\partial t} + \mu_t \frac{\partial\phi}{\partial x} + \frac{1}{2} \sigma^2_t \frac{\partial^2\phi}{\partial x^2} \right) \d t + \sigma_t \frac{\partial\phi}{\partial x} \d W_t.
+    \end{equation}
+
+    donde $\mu_t = \mu(x_t,t)$ y $\sigma_t = \sigma(x_t,t)$, y las derivadas son evaluadas en $(x_t,t)$.
+
+\end{teo}
+
+Notar que la presencia del término con la segunda derivada no tiene un análogo directo en el cálculo clásico, siendo un reflejo de la naturaleza estocástica del proceso $x=(x_t)_{t\in[0,T]}$. Por otra parte, este lema se puede extender a procesos de Itô en $\R^d$ pero se omite su formulación por simplicidad.
+
+\subsection{Resultados necesarios}
+
+En esta subsección se entregarán sin demostración algunos resultados necesarios para el desarrollo de la teoría de los modelos de difusión a tiempo continuo. Además, estos resultados serán  utilizados en la formulación dinámica del transporte óptimo en la \autoref{ot/dynamic}, y en la formulación dinámica del problema del puente de Schrödinger en la \autoref{eot_sbp/dynamic}.
+
+\subsubsection{Ecuación de Fokker-Planck}
+
+La ecuación de Fokker-Planck, también conocida como \textit{ecuación forward de Kolmogorov}, es una ecuación en derivadas parciales (PDE)  que describe la evolución temporal de la función de densidad de un proceso estocástico asociado a una SDE de la forma \eqref{eq:sde}. Por simplicidad, solo se entregará el resultado en el caso unidimensional.
+
+\begin{teo}[ecuación de Fokker-Planck, caso escalar]
+    \label{teo:fokker_planck}
+    Dada una SDE escalar ($d=1$) de la forma
+
+    \begin{equation*}
+        \d x_t = \mu(x_t,t)\d t + \sigma(x_t,t)\d W_t
+    \end{equation*}
+
+    Entonces, la evolución de la función de densidad de probabilidad de $x_t$, $p(x,t) := p(x_t)$, viene dada por la solución de la PDE
+
+    \begin{equation}
+        \label{eq:fokker_planck}
+        \frac{\partial p(x,t)}{\partial t} = -\frac{\partial}{\partial x} (\mu(x, t) p(x, t)) + \frac{1}{2} \frac{\partial^2}{\partial x^2} [\sigma^2(x, t) p(x, t)].
+    \end{equation}
+
+\end{teo}
+
+Al igual que para la fórmula de Itô en \eqref{teo:itos_formula}, este resultado puede ser extendido para procesos de Itô en $\R^d$. Es importante destacar que si el término de difusión $\sigma(x_t,t)$ es nulo, la ecuación de Fokker-Planck se reduce a la ecuación de transporte \eqref{eq:transport_eq} utilizada en la formulación dinámica del transporte óptimo (ver formulación de Benamou-Brenier en la \autoref{ot/dynamic/benamou_brenier}). Posteriormente, en el \autoref{eot_sbp}, la ecuación de Fokker-Planck será crucial para definir el sistema de Schrödinger, el cual caracterizará la solución al problema del puente de Schrödinger dinámico entre dos medidas de probabilidad.
+
+A modo de ejemplo, se aplicará el \autoref{teo:fokker_planck} sobre el movimiento browiano estándar, cuya SDE es $\d x_{t}= \d W_t$. En este caso, la ecuación de Fokker-Planck se reduce a
+
+\begin{equation*}
+    \frac{\partial p(x,t)}{\partial t} = \frac{1}{2} \frac{\partial^{2}p(x, t)}{\partial x^2}.
+\end{equation*}
+
+La cual es una ecuación de difusión (en su forma más simple), cuya solución se conoce en forma cerrada. En efecto, si se tiene una condición inicial $p(x,0)=\delta(x)$ (i.e., la el proceso estocástico $(x_t)_{t>0}$ comienza de forma determinista en el punto $0\in\R$), la solución de esta PDE es:
+
+\begin{equation*}
+    p(x,t) = \frac{1}{\sqrt{2\pi t}} \exp\left(-\frac{x^2}{2t}\right)
+\end{equation*}
+
+Por lo que la densidad marginal $p(x_t)$ del movimiento browniano $\d x_{t}= \d W_t$ (comenzando en $x_0=0$) es precisamente la densidad de una variable aleatoria gaussiana $\gaussian{0}{t}$, lo cual es lo esperado de acuerdo a la \autoref{defn:brownian_motion}.
+
+\subsubsection{Probability flow ODE}
+
+El siguiente teorema enuncia la ecuación dada en \autoref{eq:probability_flow_dm} con más generalidad:
+
+\begin{teo}[probability flow ODE]
+    \label{teo:probability_flow}
+
+    Dado un proceso estocástico solución de la SDE
+
+    \begin{equation*}
+        \label{eq:prob_flow_appx}
+        \d x_t = \mu(x_t,t)\d t + \sigma(x_t,t)\d w_t,
+        \quad x_0\sim p_0(x_0)
+    \end{equation*}
+
+    donde $\mu:\R^d\times[0,1]\to\R$ y $\sigma:\R^d\times[0,1]\to\matrixspace{d,d}{\R}$, el siguiente proceso determinista tiene las mismas densidades marginales $(p_t)_{t\leq 0}$ que el proceso estocástico asociado a la SDE \eqref{eq:prob_flow_appx}:
+
+    \begin{equation*}
+        \frac{dx_t}{dt} = \tilde{\mu}(x_t,t),
+        \quad x_0\sim p_0(x_0)
+    \end{equation*}
+
+    donde
+
+    \begin{equation*}
+        \tilde{\mu}(x_t,t) = \mu(x,t) - \frac{1}{2}\nabla\cdot\parent{\sigma(x,t)\sigma(x,t)^\top} - \frac{1}{2} \sigma(x,t)\sigma(x,t)^\top \score{x}{p_t(x)}
+    \end{equation*}
+
+\end{teo}
+
+\subsubsection{Teorema de inversión}
+
+En algunos casos, como en modelos de difusión basados en SDEs, es necesario poder invertir temporalmente un proceso estocástico. El siguiente resultado indica que, bajo condiciones razonables, esto es posible y más aún, entrega la forma que tendrá la SDE asociada al proceso inverso.
+
+\begin{teo}[inversión de Anderson]
+    \label{teo:anderson}
+    Dado un proceso estocástico $(x_t)_{t\in[0,T]}$ asociado a la SDE $dx_t=\mu(x_t,t)dt+\sigma(x_t,t)dW_t$ tal que $\mu$ y $\sigma$ son lo suficientemente regulares como para que la densidad marginal $p_t(x_t)$ sea la única solución suave de la ecuación de Fokker-Planck asociada. Entonces, existe un único proceso reverso $(Y_t)_{t\in[0,T]}=(X_{T-t})_{t\in[0,T]}$ cuya SDE viene dada por:
+
+    \begin{equation*}
+        dy_t = \left[f(y_t,t) - \nabla_{y_t}\cdot\parent{\sigma(x_t,t)\sigma(x_t,t)^\top} - \sigma(x_t,t)\sigma(x_t,t)^\top \score{y_t}{p_{T-t}(y_t)}\right]dt + \sigma(y_t,t)d\overline{w}_t
+    \end{equation*}
+
+    donde $\overline{w}$ es un movimiento browniano fluyendo hacia atrás en el tiempo.
+\end{teo}
+
+La demostración de este teorema puede ser encontrada en \cite{anderson1982reverse}.
+
+\subsection{Procesos de Ornstein–Uhlenbeck}
+
+Los procesos de Ornstein–Uhlenbeck son procesos estocásticos cruciales en diversas áreas de la ciencia y la economía. Estos procesos son fundamentales para modelar fenómenos que tienden a regresar a un valor medio o de equilibrio a lo largo del tiempo. Si bien forman una familia simple de proceso de estocástico, se les dedica una subsección aparte ya que son ampliamente utilizados en modelos generativos basados en difusión.
+
+Un proceso de Ornstein–Uhlenbeck (centrado en 0) está asociado a una SDE lineal de la forma
+
+\begin{equation*}
+    dx_t = -\alpha x_t dt + \sigma dW_t
+\end{equation*}
+
+donde $\alpha, \sigma > 0$ son constantes. Como se verá, el parámetro $\alpha$ controla la tasa de reversión hacia la media, mientras que $\sigma$ determina la volatilidad del proceso. Para esta SDE, la ecuación de Fokker-Planck \eqref{eq:fokker_planck} correspondiente es:
+
+\begin{equation*}
+    \frac{\partial p(x,t)}{\partial t} = a\frac{\partial}{\partial x} (x\, p(x, t)) + \frac{\sigma^2}{2} \frac{\partial^{2}p(x, t)}{\partial x^2}
+\end{equation*}
+
+Además, considerando $\partial_{t}p=0$ es posible encontrar la distribución estacionaria de este tipo de procesos:
+
+\begin{equation*}
+    0 = a\frac{\partial}{\partial x} (x\, p(x, t)) + \frac{\sigma^2}{2} \frac{\partial^{2}p(x, t)}{\partial x^2}
+    \implies
+    p_{\operatorname{est}}(x) = \sqrt{\frac{a}{\pi\sigma^{2}}}\exp\left(-\frac{ax^2}{\sigma^2}\right)
+\end{equation*}
+
+En caso de necesitar la densidad marginal $p(x_t)$ de forma cerrada para este tipo de procesos, la fórmula de Itô \eqref{eq:itos_formula} permite obtener la siguiente solución:
+
+\begin{equation*}
+    x_t = e^{-\alpha t} x_0 + \sigma \int_0^t e^{-\alpha(t-s)} dW_s
+\end{equation*}
+
+donde $x_0$ es la condición inicial y la integral se debe interpretar en el sentido de Itô.
+
+\paragraph{Propiedades}
+
+Una propiedad importante de este tipo de procesos es la reversión a la media, lo que significa que a tiempos largos, el proceso se estabilizará en 0, independientemente de la condición inicial. Más generalmente, es posible estabilizar el proceso a otro valor $\mu$ considerando la SDE
+
+\begin{equation*}
+    dx_t = \alpha(\mu-x_t) dt + \sigma dW_t
+\end{equation*}
+
+Los procesos de Ornstein–Uhlenbeck son unos de los procesos más simples que poseen esta propiedad, por lo que son ampliamente utilizados para modelar fenómenos en distintas áreas. En la \autoref{fig:appendix/ornstein_uhlenbeck} se realizó una simulación de este tipo de procesos utilizando el método de Euler-Maruyama dado en el \autoref{alg:euler-maruyama}, aunque es posible utilizar otros métodos de simulación más eficientes.
+
+\insertimage{appendix/ornstein_uhlenbeck}{0.8}{Simulación mediante el algoritmo de Euler-Maruyama (ver \autoref{alg:euler-maruyama}) de 5 trayectorias para el proceso de Ornstein–Uhlenbeck $dx_t = 2(1-x_t)dt + \frac{1}{2}dW_t$ en el intervalo temporal $[0,5]$ y con condición inicial $x_0=10$. Esta simulación se encuentra en el archivo \texttt{sdes.ipynb}.}
+
+Por otra parte, los procesos de Ornstein–Uhlenbeck cumplen que, dada la condición inicial, sus distribuciones marginales $x_t|x_0$ distribuyen normalmente, por lo que el proceso completo es un proceso gaussiano. Además, este tipo de procesos poseen la propiedad de Markov (el futuro del proceso solo depende de su estado actual y no del pasado). Se puede probar que los procesos de Ornstein–Uhlenbeck son los únicos que cumplen las 3 propiedades nombradas hasta ahora.
+
+Es importante destacar que la propiedad de reversión a la media junto a la de ser un proceso gaussiano es más fuerte aún ya que este tipo de procesos es ergódico y tiene una distribución invariante gaussiana.
+
+Una observación adicional es que el análogo en tiempo discreto del proceso de Ornstein–Uhlenbeck es el proceso autorregresivo de primer orden AR(1), el cual viene dado por
+
+\begin{equation*}
+    x_{t+1} = c + \phi x_t + \epsilon_t
+\end{equation*}
+
+donde $|\phi|<1$ es el parámetro de reversión a la media y $\epsilon_t$ es un término de error con distribución normal. Este paralelismo se aprovecha para la estimación y simulación de procesos de Ornstein–Uhlenbeck en situaciones donde solo se dispone de datos en intervalos discretos de tiempo, como es común en series temporales financieras.
+
+\paragraph{Aplicaciones}
+
+Dado lo simple de este tipo de modelos, es común utilizarlos en distintas ciencias con el fin de poder analizar fenómenos aleatorios. A continuación se enumeran algunas aplicaciones de los procesos de Ornstein–Uhlenbeck:
+
+\begin{itemize}
+    \item \textbf{Economía:} bajo la premisa de que las tasas de interés no pueden crecer indefinidamente y que a largo plazo se deben estabilizar en un valor medio, es posible modelar su evolución mediante este tipo de procesos (modelo de Vasicek). Bajo el mismo argumento se pueden utilizar procesos de Ornstein–Uhlenbeck para modelar el PIB de un país o tasas de cambio entre dos monedas.
+    \item \textbf{Biología:} se puede usar este tipo de procesos para modelar la evolución de una población, donde se asume que hay un valor de estabilización que se alcanzará en el largo plazo.
+    \item \textbf{Física:} originalmente este tipo de procesos se usó para modelar el movimiento aparentemente aleatorio de una partícula (modelo de Einstein) bajo un proceso de disipación de energía. El ejemplo más típico es el de un resorte, el cual se rige por la ley de Hooke, sometido a una fuerza de roce. En el largo plazo, se espera que el resorte vuelva a su condición de equilibro.
+\end{itemize}
+

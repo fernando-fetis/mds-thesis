@@ -1,0 +1,72 @@
+% Operadores matemáticos:
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+
+% Conjuntos y espacios:
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\xspace}{\mathcal{X}}
+\newcommand{\yspace}{\mathcal{Y}}
+\newcommand{\salgebra}{\mathcal{S}}
+\newcommand{\borel}[1]{\mathcal{B}\parent{#1}}
+\newcommand{\matrixspace}[2]{\mathcal{M}_{#1}\parent{#2}}
+\newcommand{\power}[1]{\mathcal{P}\parent{#1}}
+\newcommand{\supp}[1]{\operatorname{Supp}\parent{#1}}
+\newcommand{\lspace}[2]{\operatorname{L}^{#1}\parent{#2}}
+\newcommand{\continuous}[1]{\mathcal{C}\parent{#1}}
+\newcommand{\continuousb}[1]{\mathcal{C}_b\parent{#1}}
+\newcommand{\posmeasure}[1]{\mathcal{M}_+\parent{#1}}
+\newcommand{\probmeasure}[1]{\mathcal{M}_+^1\parent{#1}}
+\newcommand{\probmeasurep}[1]{\mathcal{M}_+^{1,p}\parent{#1}}
+\newcommand{\cone}[1]{\R^{#1}_{++}/_\sim}
+
+% Funciones y operadores:
+\newcommand{\parent}[1]{\left(#1\right)}
+\newcommand{\rparent}[1]{\left[#1\right]}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\dotproduct}[2]{\left\langle #1,\,#2\right\rangle}
+\newcommand{\trace}[1]{\operatorname{Tr}\parent{#1}}
+\newcommand{\diag}[1]{\operatorname{diag}\parent{#1}}
+\newcommand{\score}[2]{\nabla_{#1} \log #2}
+\newcommand{\identity}[1]{\operatorname{I}_{#1}}
+\newcommand{\1}{\mathds{1}}
+\newcommand{\wasserstein}[2]{\mathcal{W}_{#1}\parent{#2}}
+\newcommand{\weak}{\rightharpoonup}
+\newcommand{\hmetric}[2]{d_{\mathcal{H}}\parent{#1,#2}}
+\renewcommand{\d}{\,\operatorname{d}\!}
+
+% Probabilidades:
+\newcommand{\E}[2]{\mathbb{E}_{#1}\rparent{#2}}
+\newcommand{\var}[1]{\operatorname{Var}\parent{#1}}
+\newcommand{\cov}[2]{\operatorname{Cov}\parent{#1,\,#2}}
+\newcommand{\ley}[1]{\operatorname{Ley}\parent{#1}}
+\newcommand{\gaussian}[2]{\mathcal{N}\parent{#1,\,#2}}
+
+% Teoría de la información:
+\newcommand{\KL}[2]{\operatorname{D_{KL}}\parent{#1\,\|\,#2}}
+\newcommand{\fdiv}[2]{\operatorname{D}_f\parent{#1\,\|\,#2}}
+\newcommand{\TV}[2]{\operatorname{D_{TV}}\parent{#1\,\|\,#2}}
+\newcommand{\DF}[2]{\operatorname{D_F}\parent{#1\,\|\,#2}}
+\newcommand{\entropy}[1]{\mathcal{H}\parent{#1}}
+\newcommand{\elbo}{\operatorname{ELBO}}
+
+% Otros:
+\newcommand{\feasible}[2]{\genfrac {}{}{0pt}{2}{#1}{#2}}
+\newcommand{\cte}{\operatorname{constante}}
+\newcommand{\gibbs}{\mathcal{K}}
+\newcommand{\ptrue}{p_{\operatorname{true}}}
+\newcommand{\pprior}{p_{\operatorname{prior}}}
+
+% Imágenes:
+\newcommand{\insertimage}[3]{
+    \begin{figure}
+        \centering
+        \includegraphics[width=#2\textwidth]{./images/#1}
+        \caption{#3}
+        \label{fig:#1}
+    \end{figure}
+}
+
+% Temporal:
+\newcommand{\pendiente}[1]{\colorbox{yellow}{#1}}

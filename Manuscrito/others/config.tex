@@ -1,0 +1,48 @@
+% Configuración de página:
+\geometry{letterpaper,margin=2.5cm,tmargin=3cm}
+\fancyhead[L]{}
+\fancyhead[R]{\rightmark}
+\pagestyle{fancy}
+\setlength{\headheight}{13.07225pt}
+\addtolength{\topmargin}{-1.07225pt}
+
+% Espaciado entre ecuaciones y texto:
+\expandafter\def\expandafter\normalsize\expandafter{%
+    \normalsize%
+    \setlength\abovedisplayskip{0pt}%
+    \setlength\belowdisplayskip{8pt}%
+    \setlength\abovedisplayshortskip{-8pt}%
+    \setlength\belowdisplayshortskip{2pt}%
+}
+\renewcommand{\floatpagefraction}{1}%
+
+% Interlineado:
+\renewcommand{\baselinestretch}{1.12} 
+
+% Enumeración de ecuaciones y títulos:
+\numberwithin{equation}{section}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+
+% Estilo para math environments:
+\newtheoremstyle{tesis_env}
+{8pt}{8pt}{\upshape}{}{\bfseries}{.}{ }{}
+
+% Estructuras (con shared numbering):
+\theoremstyle{tesis_env}
+\newtheorem{defn}{Definición}[chapter]
+\newtheorem{teo}{Teorema}[chapter]
+\newtheorem{prop}{Proposición}[chapter]
+\newtheorem{cor}{Corolario}[chapter]
+
+% Nombre de las estructuras (autoref):
+\newcommand{\defnautorefname}{Definición}
+\newcommand{\teoautorefname}{Teorema}
+\newcommand{\propautorefname}{Proposición}
+\newcommand{\corautorefname}{Corolario}
+
+% Label y autoref para algorithm:
+\makeatletter
+\renewcommand{\ALG@name}{Algoritmo}
+\makeatother
+\newcommand{\algorithmautorefname}{Algoritmo}

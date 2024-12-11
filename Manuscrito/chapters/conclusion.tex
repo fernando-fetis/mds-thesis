@@ -1,0 +1,45 @@
+\chapter*{Conclusión}
+\addcontentsline{toc}{chapter}{Conclusión}
+
+En este trabajo se presentó de manera autocontenida y unificada tres tópicos que han ganado gran relevancia en la comunidad de la inteligencia artificial generativa: los modelos de difusión, el transporte óptimo y el problema del puente de Schrödinger. Para ello, se comenzó el estudio con una descripción general de algunos modelos generativos neuronales clásicos, lo cual permitió introducir conceptos clave como variable latente e inferencia aproximada. Posteriormente, se realizó un análisis exhaustivo de los modelos generativos basados en difusión, colocando énfasis en realizar un desarrollo \textit{natural}, tanto en su formulación como en su implementación. Esto permitió identificar algunas limitaciones intrínsecas de este tipo de modelos, lo que motivó el estudio del transporte óptimo para luego concluir con una equivalencia entre el transporte óptimo regularizado y el problema del puente de Schrödinger.
+
+En particular, los temas cubiertos para cada tópico fueron los siguientes:
+
+\begin{itemize}
+    \item Modelos de difusión.
+    \begin{itemize}
+        \item Modelos generativos alternativos: redes generativas adversarias (\autoref{dm/generative_models/gans}), modelos basados en energía (\autoref{dm/generative_models/ebm}) y autoencoders variacionales (\autoref{dm/vae}). En particular, esta última familia de modelos pudo verse como una formulación previa a los modelos de difusión, permitiendo introducir el concepto de ELBO y su interpretación física.
+        \item Formulación discreta: se definieron los procesos forward \eqref{eq:ddpm_forward} y backward \eqref{eq:ddpm_backward} de un modelo de difusión como una cadena de Markov discreta, lo que permitió obtener fácilmente las distribuciones $q(x_t|x_0)$ y $q(x_{t-1}|x_t,x_0)$ (en la \autoref{prop:forward_marginal} y en la \autoref{prop:conditional_backward} respectivamente), ambas usadas durante el entrenamiento. Además, se mostró que este tipo de modelos admiten diferentes reparametrizaciones.
+        \item Detalles prácticos: se implementaron dos arquitecturas neuronales importantes (U-Net y DiT) en la \autoref{dm/discrete_dm/unet}, ambas usadas en los modelos de difusión. Además, en la \autoref{dm/discrete_dm/improvements} se estudiaron algunos aspectos útiles al momento de entrenar y usar estos modelos, siendo DDIM y guidance los temas más importantes de esta parte.
+        \item Formulación a tiempo continuo: en la \autoref{dm/continuous_dm/score} se comenzó estudiando algunos modelos que buscan aprender la función de score (score matching y denoising score matching) para luego extender los procesos forward y backward de un modelo de difusión al continuo mediante el uso de ecuaciones diferenciales estocásticas en la \autoref{dm/continuous_dm/sde_dm}.
+        \item Limitaciones de los modelos de difusión: en la \autoref{dm/continuous_dm/limitations} se estudiaron las limitaciones que motivaron el estudio del transporte óptimo.
+    \end{itemize}
+    \item Transporte óptimo.
+    \begin{itemize}
+        \item Se comenzó estudiando los problemas de Monge (\autoref{ot/monge}) y Kantorovich (\autoref{ot/kantorovich}), ambos tanto en su formulación discreta como continua, colocando énfasis en una introducción natural al tema en vez de priorizar un desarrollo completamente riguroso.
+        \item En la \autoref{ot/kantorovich/dual} se estudió la formulación dual, la cual es necesaria para obtener resultados como el \autoref{teo:brenier}. Además, esta formulación dual es \textit{relajada} en la \autoref{eot_sbp/regularized/eot_dual}, permitiendo obtener una solución primal a partir de una solución dual.
+        \item Formulación dinámica: en la \autoref{ot/dynamic/wasserstein} se mostró que el problema de Kantorovich induce una distancia en (un subcojunto de) $\probmeasure{\xspace}$, la cual permite interpolar entre distribuciones de probabilidad y caracteriza la convergencia débil de medidas. Luego, en la \autoref{ot/dynamic/optimal_control} y en la \autoref{ot/dynamic/benamou_brenier} se vieron dos reformulaciones dinámicas del problema, las cuales fueron generalizadas posteriormente en el \autoref{eot_sbp}.
+    \end{itemize}
+    \item Problema de Schrödinger.
+    \begin{itemize}
+        \item Regularización entrópica: algunas limitaciones del problema de Kantorovich sugieren sumar un término regularizador al problema original, lo cual es hecho en la \autoref{eot_sbp/regularized/eot}. Las ventajas de esto son estudiadas en la \autoref{eot_sbp/regularized/eot_dual}.
+        \item SBP estático: en la \autoref{eot_sbp/static_sbp} se ve la equivalencia entre este nuevo problema regularizado y una versión estática del problema de Schrödinger, obteniendo un algoritmo eficiente para resolver ambos problemas.
+        \item SBP dinámico: por último, en la \autoref{eot_sbp/dynamic} se extienden los resultados anteriores de forma análoga a lo realizado en la \autoref{ot/dynamic}.
+    \end{itemize}
+\end{itemize}
+
+\section*{Impacto práctico y metodológico}
+
+Uno de los aportes más destacables de este trabajo es la integración de conceptos teóricos complejos en un marco accesible y aplicable. Este enfoque permite a la comunidad investigadora, especialmente a quienes se centran en modelos generativos, entender y aprovechar herramientas matemáticas avanzadas como la teoría del transporte óptimo y su conexión con procesos estocásticos. En particular, la equivalencia entre el transporte óptimo regularizado y los puentes de Schrödinger ofrece una perspectiva unificadora que facilita el desarrollo de algoritmos más eficientes y versátiles (como el \autoref{alg:sinkhorn}).
+
+En términos prácticos, las implementaciones realizadas en esta tesis proporcionan una base sólida para futuras investigaciones. Los modelos de difusión desarrollados, junto con las arquitecturas neuronales implementadas (como U-Net y DiT), representan herramientas de referencia al momento de implementar nuevos modelos. Por otro lado, los métodos propuestos para resolver el problema del transporte óptimo y su versión regularizada han demostrado ser computacionalmente eficientes, especialmente en dominios donde los datos están estructurados de forma no trivial.
+
+Asimismo, los puentes de Schrödinger, al ser formulados como una extensión estocástica del transporte óptimo, abren nuevas posibilidades para modelar sistemas donde la incertidumbre y el ruido juegan un papel fundamental. Esto es particularmente relevante en áreas como la modelización climática, la física computacional y las ciencias biomédicas, donde las distribuciones de probabilidad de interés no siempre son fácilmente parametrizables.
+
+En conclusión, esta tesis no solo aporta al entendimiento teórico de modelos generativos avanzados, sino que también ofrece herramientas prácticas y un marco conceptual que pueden ser utilizados y extendidos por la comunidad científica y tecnológica para abordar problemas actuales y futuros en inteligencia artificial generativa.
+
+\section*{Trabajo futuro}
+
+El objetivo general de este trabajo fue estudiar el transporte óptimo y el problema de Schrödinger como una generalización natural de los modelos generativos basados en difusión. En esa misma línea, una familia alternativa de modelos generativos que ha ganado popularidad en los últimos meses son los modelos basados en flujos normalizantes a tiempo continuo (propuestos inicialmente en \cite{chen2019neuralordinarydifferentialequations}), los cuales consisten en transformar una distribución en otra guiando su trayectoria mediante un campo de velocidades. Los modelos de difusión pueden verse como un caso particular de este tipo de modelos mediante la probability flow ODE \eqref{eq:probability_flow_dm}, mientras que la formulación de Benamou-Brenier en la \autoref{ot/dynamic/benamou_brenier} busca un campo de velocidades que realice la interpolación de McCann asociada al transporte óptimo entre las distribuciones. Por otra parte, los puentes de Schrödinger pueden verse como una versión estocástica de esta familia de modelos.
+
+Dentro de la categoría de modelos basados en flujos continuos, las propuestas más populares son los \textit{rectified flows} (propuesto en \cite{liu2022flowstraightfastlearning}) y \textit{flow matching} (propuesto en \cite{lipman2023flowmatchinggenerativemodeling}). Estas metodologías no solo representan otra generalización elegante de los modelos de difusión, sino que también comparten muchas de las características positivas de los puentes de Schrödinger estudiadas en este trabajo.

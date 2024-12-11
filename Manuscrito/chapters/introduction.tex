@@ -1,0 +1,30 @@
+\chapter*{Introducción}
+\addcontentsline{toc}{chapter}{Introducción}
+
+En la última década, los \textit{modelos generativos} han cobrado gran relevancia en el campo de la inteligencia artificial, destacándose por su capacidad para modelar datos complejos y sintetizar ejemplos realistas en diversas aplicaciones. Estas capacidades han permitido avances significativos en áreas como el entretenimiento, la biomedicina, la simulación científica y el procesamiento de lenguaje natural. Dentro de este panorama, los \textit{modelos de difusión} han surgido como una familia particularmente prometedora debido a su robustez y a la alta calidad de los datos generados.
+
+Los modelos de difusión operan distorsionando progresivamente datos provenientes de una distribución inicial, hasta alcanzar una distribución de ruido gaussiano, y luego aprenden a revertir este proceso para generar nuevas muestras. Esta dinámica está inspirada en procesos físicos, como la difusión de partículas, y ha demostrado ser altamente efectiva en tareas como la generación de imágenes de alta fidelidad. Sin embargo, a pesar de su impresionante rendimiento, estos modelos presentan ciertas limitaciones significativas. Entre ellas, destacan el alto costo computacional asociado a las simulaciones iterativas y la dificultad para ajustar adecuadamente las transiciones reversas, especialmente en distribuciones de alta dimensión.
+
+Estas limitaciones han motivado la exploración de enfoques alternativos, entre los cuales el \textit{problema del puente de Schrödinger} ha ganado creciente atención. Este enfoque, basado en la teoría del transporte óptimo regularizado, proporciona una solución robusta para la interpolación estocástica entre distribuciones, superando barreras inherentes de los modelos de difusión. Al formularse como un problema de optimización con regularización entrópica, el puente de Schrödinger no solo permite transformar distribuciones de manera eficiente, sino que también extiende las capacidades generativas a contextos más amplios, como datos no emparejados y trayectorias estocásticas personalizadas.
+
+El presente trabajo se sitúa en la intersección de estas tres áreas: los modelos de difusión, el transporte óptimo y el problema del puente de Schrödinger, con el objetivo de proporcionar un marco unificado y autocontenido para entender y conectar estas metodologías. A través de un análisis detallado y simulaciones prácticas, esta tesis busca cerrar la brecha conceptual y técnica que actualmente existe entre estas áreas, facilitando su aplicación en problemas generativos modernos.
+
+\section*{Contribuciones}
+
+Las principales contribuciones de esta tesis son las siguientes:
+
+\begin{enumerate}
+    \item Desarrollo exhaustivo de los aspectos teóricos y prácticos de los modelos de difusión, el transporte óptimo y el problema del puente de Schrödinger. Se presenta una integración coherente de estos conceptos, conectando los temas de forma natural y facilitando una comprensión unificada.
+    \item Formulación detallada del transporte óptimo para justificar de manera sólida el uso de los puentes de Schrödinger como una extensión natural de los modelos de difusión. Esta formulación permite una transición fluida desde los modelos de difusión hacia los métodos de interpolación estocástica entre distribuciones arbitrarias.
+    \item Revisión crítica de la literatura reciente, incorporando resultados y técnicas modernas tanto en el desarrollo teórico como en las implementaciones numéricas de los modelos generativos.
+    \item Desarrollo de un conjunto extenso de simulaciones numéricas y arquitecturas neuronales, incluyendo:
+          \begin{itemize}
+              \item \textbf{Modelos generativos tradicionales}: se implementó un modelo de autoencoder variacional y una red generativa adversarial para introducir los temas de generación neuronal y modelos de variable latente.
+              \item \textbf{Modelos de difusión}: en el estudio de este tipo de modelos, se implementaron los modelos denoising diffusion probabilistic models (DDPM), score matching (SM y DSM), dinámica de Langevin y técnicas de guidance. Además, se implementaron las arquitecturas neuronales U-Net y DiT, las cuales constituyen el estado del arte en redes neuronales para modelos de difusión.
+              \item \textbf{Transporte óptimo y puentes de Schrödinger}: para el estudio de este problema, se simuló una solución del problema de Kantorovich (tanto en el caso discreto como en el continuo) y se realizó una simulación de la formulación de Benamou-Brenier. Además, se implementó una interpolación de McCann, el algoritmo de Sinkhorn y una red WGAN.
+          \end{itemize}
+\end{enumerate}
+
+Es importante destacar que uno de los objetivos principales de esta tesis es proporcionar un estudio autocontenido del problema del puente de Schrödinger, el cual presenta múltiples formulaciones equivalentes, muchas de ellas utilizando resultados técnicos avanzados. Para facilitar la comprensión y el desarrollo de estas formulaciones, se ha incluido un apéndice que cubre de manera detallada los resultados necesarios de cálculo estocástico y teoría de la medida, proporcionando un soporte técnico robusto para los desarrollos teóricos presentados.
+
+Con este marco integral, esta tesis no solo aporta al entendimiento teórico de los modelos generativos modernos, sino que también habilita su aplicación práctica en un amplio espectro de problemas, desde la síntesis de datos realistas hasta la interpolación de distribuciones complejas.
