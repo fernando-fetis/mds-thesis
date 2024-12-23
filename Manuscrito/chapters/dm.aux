@@ -1,0 +1,358 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {1}Modelos de difusión}{3}{chapter.1}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{dm}{{1}{3}{Modelos de difusión}{chapter.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.1}Modelos generativos neuronales}{3}{section.1.1}\protected@file@percent }
+\newlabel{dm/generative_models}{{1.1}{3}{Modelos generativos neuronales}{section.1.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.1}Redes generativas adversarias}{3}{subsection.1.1.1}\protected@file@percent }
+\newlabel{dm/generative_models/gans}{{1.1.1}{3}{Redes generativas adversarias}{subsection.1.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Formulación y convergencia}{4}{section*.7}\protected@file@percent }
+\newlabel{eq:gan_objective}{{1.1.1}{4}{Formulación y convergencia}{equation.1.1.1}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Entrenamiento de una GAN}}{4}{algorithm.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{alg:gan_training}{{1}{4}{Entrenamiento de una GAN}{algorithm.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.1}{\ignorespaces Dinámica de entrenamiento de una GAN. La curva negra segmentada representa a $p_{\operatorname  {data}}$, la curva verde representa $p_g$ y la línea azul segmentada representa la distribución aprendida por el discriminador. En (a) se tiene el estado actual de la GAN luego de algunas iteraciones donde la convergencia del discriminador aún no es alcanzada. En (b) se observa el estado de la GAN luego de entrenar el clasificador. En (c) se ve el el estado de la GAN luego de optimizar el generador. En (d) se observa la convergencia, donde $p_g$ es indistinguible de $p_{\operatorname  {data}}$ y el discriminador sigue una distribución de Bernoulli (máxima entropía). Imagen obtenida desde \blx@tocontentsinit {0}\cite {goodfellow2014generative}.}}{5}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:dm/gan_training}{{1.1}{5}{Dinámica de entrenamiento de una GAN. La curva negra segmentada representa a $\ptrue $, la curva verde representa $p_g$ y la línea azul segmentada representa la distribución aprendida por el discriminador. En (a) se tiene el estado actual de la GAN luego de algunas iteraciones donde la convergencia del discriminador aún no es alcanzada. En (b) se observa el estado de la GAN luego de entrenar el clasificador. En (c) se ve el el estado de la GAN luego de optimizar el generador. En (d) se observa la convergencia, donde $p_g$ es indistinguible de $\ptrue $ y el discriminador sigue una distribución de Bernoulli (máxima entropía). Imagen obtenida desde \cite {goodfellow2014generative}}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Generación condicional}{5}{section*.10}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.2}{\ignorespaces Imágenes generadas por una GAN entrenada durante 50 épocas con una red fully-connected sobre el dataset MNIST (izquierda) y FashionMNIST (derecha). La implementación de este modelo se encuentra en el archivo \texttt  {gan\_images.ipynb}. En el archivo \texttt  {gan.ipynb} se puede encontrar una implementación para datos bidimensionales.}}{6}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:dm/gan_samples}{{1.2}{6}{Imágenes generadas por una GAN entrenada durante 50 épocas con una red fully-connected sobre el dataset MNIST (izquierda) y FashionMNIST (derecha). La implementación de este modelo se encuentra en el archivo \texttt {gan\_images.ipynb}. En el archivo \texttt {gan.ipynb} se puede encontrar una implementación para datos bidimensionales}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Limitaciones de las GANs}{6}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1.2}Modelos basados en energía}{7}{subsection.1.1.2}\protected@file@percent }
+\newlabel{dm/generative_models/ebm}{{1.1.2}{7}{Modelos basados en energía}{subsection.1.1.2}{}}
+\newlabel{eq:energy_density}{{1.1.2}{7}{Modelos basados en energía}{equation.1.1.2}{}}
+\newlabel{defn:kl_ac}{{1.1}{7}{divergencia de Kullback-Leibler, caso absolutamente continuo}{defn.1.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.2}Autoencoders variacionales}{8}{section.1.2}\protected@file@percent }
+\newlabel{dm/vae}{{1.2}{8}{Autoencoders variacionales}{section.1.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.1}Modelos de variable latente}{8}{subsection.1.2.1}\protected@file@percent }
+\newlabel{dm/vae/latent_models}{{1.2.1}{8}{Modelos de variable latente}{subsection.1.2.1}{}}
+\newlabel{eq:latent_model}{{1.2.1}{8}{Modelos de variable latente}{equation.1.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Criterio de máxima verosimilitud}{9}{section*.12}\protected@file@percent }
+\newlabel{eq:generative_marginal}{{1.2.2}{9}{Criterio de máxima verosimilitud}{equation.1.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Cota inferior de la evidencia}{10}{section*.13}\protected@file@percent }
+\newlabel{eq:evidence_decomposition}{{1.2.3}{10}{descomposición de la evidencia}{equation.1.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.3}{\ignorespaces (Izquierda) muestras generadas por un VAE para una distribución $p_{\operatorname  {data}}$ bidimensional. (Derecha) interpolación en el espacio latente del VAE, lo cual es posible debido a que no hay colapso de la posterior. La implementación de este modelo se encuentra en el archivo \texttt  {vae\_1d.ipynb}.}}{11}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:dm/vae_interpolation}{{1.3}{11}{(Izquierda) muestras generadas por un VAE para una distribución $\ptrue $ bidimensional. (Derecha) interpolación en el espacio latente del VAE, lo cual es posible debido a que no hay colapso de la posterior. La implementación de este modelo se encuentra en el archivo \texttt {vae\_1d.ipynb}}{figure.caption.14}{}}
+\newlabel{eq:elbo_decomposition}{{1.2.4}{11}{descomposición de la ELBO}{equation.1.2.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Conexión entre la ELBO y la física estadística}{11}{section*.15}\protected@file@percent }
+\newlabel{eq:boltzmann}{{1.2.5}{11}{Conexión entre la ELBO y la física estadística}{equation.1.2.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2.2}Formulación de un VAE}{12}{subsection.1.2.2}\protected@file@percent }
+\newlabel{dm/vae/formulation}{{1.2.2}{12}{Formulación de un VAE}{subsection.1.2.2}{}}
+\newlabel{eq:vae_model_posterior}{{1.2.6}{12}{Formulación de un VAE}{equation.1.2.6}{}}
+\newlabel{eq:vae_model_prior}{{1.2.7}{12}{Formulación de un VAE}{equation.1.2.7}{}}
+\newlabel{teo:kl_gaussians}{{1.2}{12}{divergencia de Kullback-Leibler entre distribuciones gaussianas}{teo.1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.4}{\ignorespaces Representación gráfica de un autoencoder variacional para MNIST. Imagen obtenida desde \blx@tocontentsinit {0}\cite {hafner2018tfdistvae}.}}{13}{figure.caption.16}\protected@file@percent }
+\newlabel{fig:dm/vae}{{1.4}{13}{Representación gráfica de un autoencoder variacional para MNIST. Imagen obtenida desde \cite {hafner2018tfdistvae}}{figure.caption.16}{}}
+\newlabel{eq:elbo_vae}{{1.2.8}{13}{descomposición de la ELBO para un VAE}{equation.1.2.8}{}}
+\newlabel{eq:reconstruction_montecarlo}{{1.2.9}{13}{descomposición de la ELBO para un VAE}{equation.1.2.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Cálculo del término de reconstrucción}{13}{section*.18}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.5}{\ignorespaces Muestras generadas por un autoencoder variacional condicional sobre el dataset MNIST. La implementación de este modelo se encuentra en el archivo \texttt  {conditional\_vae.ipynb}}}{14}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:dm/conditional_vae}{{1.5}{14}{Muestras generadas por un autoencoder variacional condicional sobre el dataset MNIST. La implementación de este modelo se encuentra en el archivo \texttt {conditional\_vae.ipynb}}{figure.caption.17}{}}
+\@writefile{toc}{\contentsline {paragraph}{Término de reconstrucción en datos continuos}{14}{section*.19}\protected@file@percent }
+\newlabel{eq:decoder_continuous}{{1.2.10}{14}{Término de reconstrucción en datos continuos}{equation.1.2.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{Término de reconstrucción en imágenes}{14}{section*.20}\protected@file@percent }
+\newlabel{eq:decoder_images}{{1.2.11}{14}{Término de reconstrucción en imágenes}{equation.1.2.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Autoencoders variacionales jerárquicos markovianos}{15}{section*.22}\protected@file@percent }
+\newlabel{eq:joint_hvae_decoder}{{1.2.12}{15}{Autoencoders variacionales jerárquicos markovianos}{equation.1.2.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.6}{\ignorespaces (Izquierda) reconstrucción de imágenes realizada por un VAE sobre el dataset CIFAR-10 utilizando una red convolucional, donde las primeras 4 filas corresponden a las imágenes originales y las últimas 4 filas corresponden a la reconstrucción. (Derecha) generación incondicional de imágenes a partir del VAE. La implementación de este modelo se encuentra en el archivo \texttt  {vae.ipynb}.}}{16}{figure.caption.21}\protected@file@percent }
+\newlabel{fig:dm/vae_samples}{{1.6}{16}{(Izquierda) reconstrucción de imágenes realizada por un VAE sobre el dataset CIFAR-10 utilizando una red convolucional, donde las primeras 4 filas corresponden a las imágenes originales y las últimas 4 filas corresponden a la reconstrucción. (Derecha) generación incondicional de imágenes a partir del VAE. La implementación de este modelo se encuentra en el archivo \texttt {vae.ipynb}}{figure.caption.21}{}}
+\newlabel{eq:elbo_mhvae}{{1.2.13}{16}{ELBO para un HVAE}{equation.1.2.13}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.3}Modelos de difusión a tiempo discreto}{16}{section.1.3}\protected@file@percent }
+\newlabel{dm/discrete_dm}{{1.3}{16}{Modelos de difusión a tiempo discreto}{section.1.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.7}{\ignorespaces Modelo gráfico para un VAE estándar (izquierda) y para un HVAE con dos niveles de jerarquía (derecha). Imágenes obtenidas desde \blx@tocontentsinit {0}\cite {turner_diffusion_2021}.}}{17}{figure.caption.23}\protected@file@percent }
+\newlabel{fig:dm/vae_hvae_graph}{{1.7}{17}{Modelo gráfico para un VAE estándar (izquierda) y para un HVAE con dos niveles de jerarquía (derecha). Imágenes obtenidas desde \cite {turner_diffusion_2021}}{figure.caption.23}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.1}Formulación}{17}{subsection.1.3.1}\protected@file@percent }
+\newlabel{dm/discrete_dm/formulation}{{1.3.1}{17}{Formulación}{subsection.1.3.1}{}}
+\newlabel{eq:ddpm_forward}{{1.3.1}{17}{Formulación}{equation.1.3.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.8}{\ignorespaces Modelo gráfico del proceso de denoising de un DDPM. El proceso comienza con una muestra $x_T\sim p_\text  {prior}(x_T)$ y continúa con las transiciones de Markov dadas en \eqref  {eq:ddpm_backward} utilizando el modelo $p_\theta $ ya entrenado. La flecha reversa indica el proceso de inyección de ruido realizado durante el entrenamiento. Imagen obtenida desde \blx@tocontentsinit {0}\cite {ho2020denoising}.}}{18}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:dm/ddpm_model}{{1.8}{18}{Modelo gráfico del proceso de denoising de un DDPM. El proceso comienza con una muestra $x_T\sim p_\text {prior}(x_T)$ y continúa con las transiciones de Markov dadas en \eqref {eq:ddpm_backward} utilizando el modelo $p_\theta $ ya entrenado. La flecha reversa indica el proceso de inyección de ruido realizado durante el entrenamiento. Imagen obtenida desde \cite {ho2020denoising}}{figure.caption.24}{}}
+\newlabel{eq:ddpm_backward}{{1.3.2}{18}{Formulación}{equation.1.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Propiedades de los procesos forward y backward}{18}{section*.25}\protected@file@percent }
+\newlabel{prop:forward_marginal}{{1.10}{18}{marginal condicional para el proceso forward}{prop.1.10}{}}
+\newlabel{eq:forward_marginal}{{1.3.3}{18}{marginal condicional para el proceso forward}{equation.1.3.3}{}}
+\newlabel{prop:conditional_backward}{{1.11}{19}{proceso inverso condicional a $x_0$}{prop.1.11}{}}
+\newlabel{eq:conditional_backward}{{1.3.4}{19}{proceso inverso condicional a $x_0$}{equation.1.3.4}{}}
+\newlabel{eq:conditional_backward_params}{{1.3.5}{19}{proceso inverso condicional a $x_0$}{equation.1.3.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.9}{\ignorespaces (Arriba) muestras del proceso forward dado por la \autoref {prop:forward_marginal} para $T=5$. (Abajo) muestras del proceso reverso condicional dado por la \autoref {prop:conditional_backward}. La implementación de estas distribuciones se encuentra en el archivo \texttt  {ddpm.ipynb}.}}{20}{figure.caption.26}\protected@file@percent }
+\newlabel{fig:dm/distributions}{{1.9}{20}{(Arriba) muestras del proceso forward dado por la \autoref {prop:forward_marginal} para $T=5$. (Abajo) muestras del proceso reverso condicional dado por la \autoref {prop:conditional_backward}. La implementación de estas distribuciones se encuentra en el archivo \texttt {ddpm.ipynb}}{figure.caption.26}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Formulación para el proceso inverso}{21}{section*.27}\protected@file@percent }
+\newlabel{eq:backward_transition}{{1.3.6}{21}{Formulación para el proceso inverso}{equation.1.3.6}{}}
+\newlabel{eq:backward_covariance}{{1.3.7}{21}{Formulación para el proceso inverso}{equation.1.3.7}{}}
+\@writefile{toc}{\contentsline {subsubsection}{ELBO y función objetivo}{21}{section*.28}\protected@file@percent }
+\newlabel{teo:elbo_ddpm}{{1.3}{21}{ELBO para DDPM}{teo.1.3}{}}
+\newlabel{eq:elbo_ddpm}{{1.3.8}{21}{ELBO para DDPM}{equation.1.3.8}{}}
+\newlabel{eq:elbo_ddpm_aux1}{{1.3.9}{22}{ELBO y función objetivo}{equation.1.3.9}{}}
+\newlabel{eq:elbo_ddpm_aux2}{{1.3.10}{22}{ELBO y función objetivo}{equation.1.3.10}{}}
+\newlabel{prop:mu_prediction}{{1.12}{23}{problema de optimización DDPM, $\mu $-prediction}{prop.1.12}{}}
+\@writefile{toc}{\contentsline {paragraph}{Enfoque $x_0$-prediction}{23}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Enfoque $\epsilon $-prediction}{24}{section*.30}\protected@file@percent }
+\newlabel{prop:epsilon_prediction}{{1.14}{24}{problema de optimización DDPM, $\epsilon $-prediction}{prop.1.14}{}}
+\newlabel{eq:ddpm_epsilon_prediction}{{1.3.11}{24}{problema de optimización DDPM, $\epsilon $-prediction}{equation.1.3.11}{}}
+\newlabel{eq:ddpm_simple}{{1.3.12}{25}{Enfoque \texorpdfstring {$\epsilon $}{epsilon}-prediction}{equation.1.3.12}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Algoritmos de entrenamiento y sampling}{25}{section*.31}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Entrenamiento del modelo DDPM}}{25}{algorithm.2}\protected@file@percent }
+\newlabel{alg:ddpm_training}{{2}{25}{Entrenamiento del modelo DDPM}{algorithm.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces Ancestral sampling}}{26}{algorithm.3}\protected@file@percent }
+\newlabel{alg:ddpm_sampling}{{3}{26}{Ancestral sampling}{algorithm.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.2}Arquitectura U-Net para modelos de difusión}{26}{subsection.1.3.2}\protected@file@percent }
+\newlabel{dm/discrete_dm/unet}{{1.3.2}{26}{Arquitectura U-Net para modelos de difusión}{subsection.1.3.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.10}{\ignorespaces Proceso de generación de muestras para un modelo entrenado en CIFAR-10. Cada fila es una muestra distinta y cada columna muestra la predicción actual en un tiempo $t$. Imagen obtenida desde \blx@tocontentsinit {0}\cite {ho2020denoising}.}}{27}{figure.caption.32}\protected@file@percent }
+\newlabel{fig:dm/ddpm_cifar10}{{1.10}{27}{Proceso de generación de muestras para un modelo entrenado en CIFAR-10. Cada fila es una muestra distinta y cada columna muestra la predicción actual en un tiempo $t$. Imagen obtenida desde \cite {ho2020denoising}}{figure.caption.32}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.11}{\ignorespaces (Izquierda) batch de entrenamiento para un modelo de difusión. (Derecha) muestras generadas por el modelo de difusión. La implementación de esta técnica se encuentra en el archivo \texttt  {ddpm.ipynb}.}}{27}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:dm/ddpm_samples}{{1.11}{27}{(Izquierda) batch de entrenamiento para un modelo de difusión. (Derecha) muestras generadas por el modelo de difusión. La implementación de esta técnica se encuentra en el archivo \texttt {ddpm.ipynb}}{figure.caption.33}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.12}{\ignorespaces Arquitectura U-Net original para segmentación de imágenes. Imagen obtenida desde \blx@tocontentsinit {0}\cite {ronneberger2015unet}.}}{28}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:dm/u_net_original}{{1.12}{28}{Arquitectura U-Net original para segmentación de imágenes. Imagen obtenida desde \cite {ronneberger2015unet}}{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.13}{\ignorespaces Arquitectura U-Net usada para modelos de difusión. El bloque gris representa el input (imagen RGB) mientras que los bloques rosados son bloques convolucionales. Los bloques celestes y verdes son bloques de \textit  {downsampling} y \textit  {upsampling} respectivamente. Los bloques naranjos son bloques de atención. Por último, las flechas grises son las conexiones residuales. Imagen obtenida desde \blx@tocontentsinit {0}\cite {erdem2023stepByStepVisualIntroductionToDiffusionModels}.}}{29}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:dm/u_net_dm}{{1.13}{29}{Arquitectura U-Net usada para modelos de difusión. El bloque gris representa el input (imagen RGB) mientras que los bloques rosados son bloques convolucionales. Los bloques celestes y verdes son bloques de \textit {downsampling} y \textit {upsampling} respectivamente. Los bloques naranjos son bloques de atención. Por último, las flechas grises son las conexiones residuales. Imagen obtenida desde \cite {erdem2023stepByStepVisualIntroductionToDiffusionModels}}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.3.3}Mejoras al modelo DDPM}{29}{subsection.1.3.3}\protected@file@percent }
+\newlabel{dm/discrete_dm/improvements}{{1.3.3}{29}{Mejoras al modelo DDPM}{subsection.1.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{iDDPM}{29}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Varianza $\Sigma _\theta (x_t,t)$ aprendible}{29}{section*.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sampling con menos iteraciones}{30}{section*.38}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Función objetivo híbrida}{30}{section*.39}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cosine scheduler}{30}{section*.40}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.14}{\ignorespaces (arriba) Proceso de difusión asociado a un scheduler lineal. (abajo) Proceso de difusión asociado a un scheduler coseno. Imagen obtenida desde \blx@tocontentsinit {0}\cite {nichol2021improved}.}}{31}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:dm/linear_cosine_scheduler}{{1.14}{31}{(arriba) Proceso de difusión asociado a un scheduler lineal. (abajo) Proceso de difusión asociado a un scheduler coseno. Imagen obtenida desde \cite {nichol2021improved}}{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {paragraph}{Neural scaling law para los modelos de difusión}{31}{section*.42}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Procesos de difusión no markovianos}{31}{section*.43}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces Generación usando DDIM}}{32}{algorithm.4}\protected@file@percent }
+\newlabel{alg:ddim_sampling}{{4}{32}{Generación usando DDIM}{algorithm.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Generación condicional}{32}{section*.44}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Classifier-guidance}{33}{section*.45}\protected@file@percent }
+\newlabel{eq:score_mean_relationship}{{1.3.3}{33}{Classifier-guidance}{section*.45}{}}
+\newlabel{eq:classifier_guidance}{{1.3.13}{33}{Classifier-guidance}{equation.1.3.13}{}}
+\newlabel{eq:guidance_temperature}{{1.3.14}{33}{Classifier-guidance}{equation.1.3.14}{}}
+\@writefile{toc}{\contentsline {paragraph}{Classifier-free guidance}{33}{section*.49}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.15}{\ignorespaces Desviación de la distribución aprendida por el modelo incondicional $p_\theta (x)$ según la escala de \textit  {guidance} (aquí denotado por $s$). El modelo discriminativo $p_\theta (y|x)$ le da un alto valor a puntos cercanos a la cruz marcada en negro. La implementación de esta técnica se encuentra en el archivo \texttt  {ddpm.ipynb}.}}{34}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:dm/guidance}{{1.15}{34}{Desviación de la distribución aprendida por el modelo incondicional $p_\theta (x)$ según la escala de \textit {guidance} (aquí denotado por $s$). El modelo discriminativo $p_\theta (y|x)$ le da un alto valor a puntos cercanos a la cruz marcada en negro. La implementación de esta técnica se encuentra en el archivo \texttt {ddpm.ipynb}}{figure.caption.46}{}}
+\newlabel{eq:guidance_discriminative}{{1.3.15}{34}{Classifier-free guidance}{equation.1.3.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.16}{\ignorespaces Trade-off entre calidad y variedad que se observa al cambiar el factor de escala del gradiente. Por un lado, al aumentar el factor aumenta el FID, IS y la precisión (indicadores asociados a la calidad), mientras que disminuye el recall (indicador asociado a la diversidad). Imagen obtenida desde \blx@tocontentsinit {0}\cite {nichol2022glidephotorealisticimagegeneration}.}}{35}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:dm/classifier_guidance_scale}{{1.16}{35}{Trade-off entre calidad y variedad que se observa al cambiar el factor de escala del gradiente. Por un lado, al aumentar el factor aumenta el FID, IS y la precisión (indicadores asociados a la calidad), mientras que disminuye el recall (indicador asociado a la diversidad). Imagen obtenida desde \cite {nichol2022glidephotorealisticimagegeneration}}{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Difusión en el espacio latente}{35}{section*.50}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.17}{\ignorespaces Visualización del trade-off entre calidad y variedad al usar guidance. (Izquierda) modelo GLIDE incondicional. (Derecha) modelo GLIDE con classifier-free guidance, escala $\gamma =3.0$. Imagen obtenida desde \blx@tocontentsinit {0}\cite {nichol2022glidephotorealisticimagegeneration}.}}{36}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:glide}{{1.17}{36}{Visualización del trade-off entre calidad y variedad al usar guidance. (Izquierda) modelo GLIDE incondicional. (Derecha) modelo GLIDE con classifier-free guidance, escala $\gamma =3.0$. Imagen obtenida desde \cite {nichol2022glidephotorealisticimagegeneration}}{figure.caption.48}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.18}{\ignorespaces Arquitectura del modelo \textit  {Stable Diffusion}. El bloque rosado corresponde al VAE mientras que el bloque verde corresponde al modelo de difusión en el espacio latente. Para condicionar la generación, un embedding aprendido $\tau _\theta $ es inyectado a la U-Net mediante un mecanismo de \textit  {cross-attention}. Imagen obtenida desde \blx@tocontentsinit {0}\cite {rombach2022highresolution}.}}{37}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:dm/ldm_architecture}{{1.18}{37}{Arquitectura del modelo \textit {Stable Diffusion}. El bloque rosado corresponde al VAE mientras que el bloque verde corresponde al modelo de difusión en el espacio latente. Para condicionar la generación, un embedding aprendido $\tau _\theta $ es inyectado a la U-Net mediante un mecanismo de \textit {cross-attention}. Imagen obtenida desde \cite {rombach2022highresolution}}{figure.caption.51}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.19}{\ignorespaces Mecanismo de condicionamiento en el modelo \textit  {Stable Diffusion}. La matriz $\tau _\theta $ es obtenida a partir de $y$. Un mecanismo de atención cruzada entre las distintas capas de la red y $\tau _\theta $ permite introducir la información de $y$ en la red. Imagen obtenida desde \blx@tocontentsinit {0}\cite {samarin2022powerdm}.}}{37}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:dm/stable_diffusion_cond}{{1.19}{37}{Mecanismo de condicionamiento en el modelo \textit {Stable Diffusion}. La matriz $\tau _\theta $ es obtenida a partir de $y$. Un mecanismo de atención cruzada entre las distintas capas de la red y $\tau _\theta $ permite introducir la información de $y$ en la red. Imagen obtenida desde \cite {samarin2022powerdm}}{figure.caption.52}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1.4}Generalización a tiempo continuo}{37}{section.1.4}\protected@file@percent }
+\newlabel{dm/continuous_dm}{{1.4}{37}{Generalización a tiempo continuo}{section.1.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.20}{\ignorespaces (izquierda) generación condicionada a un mapa semántico. (derecha) eliminación de objetos mediante \textit  {inpainting}. Imagen obtenida desde \blx@tocontentsinit {0}\cite {rombach2022highresolution}.}}{38}{figure.caption.53}\protected@file@percent }
+\newlabel{img:ldm_inpainting}{{1.20}{38}{(izquierda) generación condicionada a un mapa semántico. (derecha) eliminación de objetos mediante \textit {inpainting}. Imagen obtenida desde \cite {rombach2022highresolution}}{figure.caption.53}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.1}Modelos generativos basados en score}{38}{subsection.1.4.1}\protected@file@percent }
+\newlabel{dm/continuous_dm/score}{{1.4.1}{38}{Modelos generativos basados en score}{subsection.1.4.1}{}}
+\newlabel{defn:score}{{1.3}{39}{función de score}{defn.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Modelo de score matching}{39}{section*.54}\protected@file@percent }
+\newlabel{eq:sm_objective}{{1.15}{39}{divergencia de Fisher para score matching}{prop.1.15}{}}
+\newlabel{eq:langevin_sde}{{1.4.1}{40}{Modelo de score matching}{equation.1.4.1}{}}
+\newlabel{eq:langevin_sde_1d}{{1.4.2}{40}{Modelo de score matching}{equation.1.4.2}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces Langevin sampling}}{41}{algorithm.5}\protected@file@percent }
+\newlabel{alg:langevin}{{5}{41}{Langevin sampling}{algorithm.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Score matching mediante la inyección de ruido}{41}{section*.55}\protected@file@percent }
+\newlabel{prop:fisher_dsm}{{1.17}{41}{divergencia de Fisher para DSM}{prop.1.17}{}}
+\newlabel{eq:fisher_dsm}{{1.4.3}{41}{Score matching mediante la inyección de ruido}{equation.1.4.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.21}{\ignorespaces Campo vectorial de la función de score real (izquierda) y de la función de score aprendida (derecha) para una mixtura gaussiana. El mapa de calor está asociado a la densidad de la mixtura y los rectángulos muestran las zonas donde la predicción del score es cercana a la real. Se observa que la predicción solo es precisa alrededor de las modas de la mixtura.}}{42}{figure.caption.56}\protected@file@percent }
+\newlabel{fig:dm/sgm_low_density}{{1.21}{42}{Campo vectorial de la función de score real (izquierda) y de la función de score aprendida (derecha) para una mixtura gaussiana. El mapa de calor está asociado a la densidad de la mixtura y los rectángulos muestran las zonas donde la predicción del score es cercana a la real. Se observa que la predicción solo es precisa alrededor de las modas de la mixtura}{figure.caption.56}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.22}{\ignorespaces Muestras generadas a partir de una mixtura gaussiana utilizando la dinámica de Langevin dada en el \autoref {alg:langevin}. El mapa de calor indica la densidad de la mixtura en cada punto del plano y las curvas muestran la trayectoria seguida por el proceso de generación $(x_t)_{t=1}^T$. Se observa que la dinámica de Langevin no es capaz de respetar los priors de cada componente de la mixtura, donde se esperaría que la componente con mayor relevancia (con prior de clase $0.6$) tenga una mayor cantidad de muestras generadas. Esta simulación se encuentra en el archivo \texttt  {langevin.ipynb}.}}{43}{figure.caption.57}\protected@file@percent }
+\newlabel{fig:dm/langevin}{{1.22}{43}{Muestras generadas a partir de una mixtura gaussiana utilizando la dinámica de Langevin dada en el \autoref {alg:langevin}. El mapa de calor indica la densidad de la mixtura en cada punto del plano y las curvas muestran la trayectoria seguida por el proceso de generación $(x_t)_{t=1}^T$. Se observa que la dinámica de Langevin no es capaz de respetar los priors de cada componente de la mixtura, donde se esperaría que la componente con mayor relevancia (con prior de clase $0.6$) tenga una mayor cantidad de muestras generadas. Esta simulación se encuentra en el archivo \texttt {langevin.ipynb}}{figure.caption.57}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.23}{\ignorespaces (izquierda) muestras de entrenamiento generadas a partir de la mixtura de la \autoref {fig:dm/sgm_low_density}. (centro) muestras generadas mediante DSM con la dinámica de Langevin usual. (derecha) muestras generadas con la dinámica de Langevin propuesta por \blx@tocontentsinit {0}\cite {song2020generative}.}}{44}{figure.caption.58}\protected@file@percent }
+\newlabel{fig:dm/sgm_mixture_sampling}{{1.23}{44}{(izquierda) muestras de entrenamiento generadas a partir de la mixtura de la \autoref {fig:dm/sgm_low_density}. (centro) muestras generadas mediante DSM con la dinámica de Langevin usual. (derecha) muestras generadas con la dinámica de Langevin propuesta por \cite {song2020generative}}{figure.caption.58}{}}
+\newlabel{eq:dsm_loss}{{1.4.4}{44}{Score matching mediante la inyección de ruido}{equation.1.4.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{DDPM como modelo basado en score}{44}{section*.59}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces Annealed Langevin sampling}}{45}{algorithm.6}\protected@file@percent }
+\newlabel{alg:annealed_langevin}{{6}{45}{Annealed Langevin sampling}{algorithm.6}{}}
+\newlabel{eq:x0_epsilon_prediction}{{1.4.5}{46}{DDPM como modelo basado en score}{equation.1.4.5}{}}
+\newlabel{eq:x0_tweedie}{{1.4.6}{46}{DDPM como modelo basado en score}{equation.1.4.6}{}}
+\newlabel{prop:score_prediction}{{1.18}{46}{problema de optimización DDPM (score-prediction)}{prop.1.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.2}Modelos de difusión mediante el uso de SDEs}{46}{subsection.1.4.2}\protected@file@percent }
+\newlabel{dm/continuous_dm/sde_dm}{{1.4.2}{46}{Modelos de difusión mediante el uso de SDEs}{subsection.1.4.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{SDEs asociadas a DDPM y DSM}{47}{section*.60}\protected@file@percent }
+\newlabel{eq:ddpm_forward_variance}{{1.4.7}{47}{SDEs asociadas a DDPM y DSM}{equation.1.4.7}{}}
+\newlabel{eq:ddpm_sde}{{1.4.8}{47}{SDE asociada a DDPM}{equation.1.4.8}{}}
+\newlabel{eq:ddpm_sde_aux}{{1.4.2}{47}{SDEs asociadas a DDPM y DSM}{equation.1.4.8}{}}
+\newlabel{eq:sdm_sde}{{1.4.9}{47}{SDE asociada a DSM}{equation.1.4.9}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Generalización a otras SDEs}{48}{section*.61}\protected@file@percent }
+\newlabel{eq:score_sde}{{1.4.10}{48}{Generalización a otras SDEs}{equation.1.4.10}{}}
+\newlabel{eq:score_reverse_sde}{{1.4.11}{48}{Generalización a otras SDEs}{equation.1.4.11}{}}
+\newlabel{eq:loss_continuous_dm}{{1.4.12}{48}{Generalización a otras SDEs}{equation.1.4.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.24}{\ignorespaces SDEs de los procesos de difusión y \textit  {denoising} para el modelo de difusión basado en una SDE, donde el proceso reverso depende únicamente del score a lo largo del proceso forward. Imagen obtenida desde \blx@tocontentsinit {0}\cite {song2021scorebased}.}}{49}{figure.caption.62}\protected@file@percent }
+\newlabel{fig:dm/score_sde}{{1.24}{49}{SDEs de los procesos de difusión y \textit {denoising} para el modelo de difusión basado en una SDE, donde el proceso reverso depende únicamente del score a lo largo del proceso forward. Imagen obtenida desde \cite {song2021scorebased}}{figure.caption.62}{}}
+\newlabel{eq:lambda_loss}{{1.4.13}{49}{Generalización a otras SDEs}{equation.1.4.13}{}}
+\@writefile{toc}{\contentsline {paragraph}{Método de Euler-Maruyama}{50}{section*.63}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces Euler-Maruyama}}{50}{algorithm.7}\protected@file@percent }
+\newlabel{alg:euler-maruyama}{{7}{50}{Euler-Maruyama}{algorithm.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Probability flow ODE}{50}{section*.64}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.25}{\ignorespaces Ilustración de los procesos forward y backward en un modelo de difusión. El proceso forward comienza con una distribución bimodal $p_0=p_{\operatorname  {data}}$ y termina en una distribución gaussiana $p_T=p_{\operatorname  {prior}}$. El proceso backward comienza desde la distribución prior y termina en la distribución de los datos. Las curvas erráticas muestran trayectorias del proceso estocástico para cuatro condiciones iniciales obtenidas desde $x_0\sim p_{\operatorname  {data}}(x_0)$. En el proceso forward, las curvas blancas muestran la evolución de la \textit  {probability flow ODE} al comenzar desde las muestras $x_0$ obtenidas. En el proceso backward las curvas blancas muestran como el proceso determinista regresa a las muestras $x_0$ originales al comenzar desde $x_T$. Imagen obtenida desde \blx@tocontentsinit {0}\cite {song2021scorebased}.}}{51}{figure.caption.65}\protected@file@percent }
+\newlabel{fig:dm/score_prob_flow}{{1.25}{51}{Ilustración de los procesos forward y backward en un modelo de difusión. El proceso forward comienza con una distribución bimodal $p_0=\ptrue $ y termina en una distribución gaussiana $p_T=\pprior $. El proceso backward comienza desde la distribución prior y termina en la distribución de los datos. Las curvas erráticas muestran trayectorias del proceso estocástico para cuatro condiciones iniciales obtenidas desde $x_0\sim \ptrue (x_0)$. En el proceso forward, las curvas blancas muestran la evolución de la \textit {probability flow ODE} al comenzar desde las muestras $x_0$ obtenidas. En el proceso backward las curvas blancas muestran como el proceso determinista regresa a las muestras $x_0$ originales al comenzar desde $x_T$. Imagen obtenida desde \cite {song2021scorebased}}{figure.caption.65}{}}
+\newlabel{eq:probability_flow_dm}{{1.4.14}{51}{Probability flow ODE}{equation.1.4.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.3}Entrenamiento basado en verosimilitud}{52}{subsection.1.4.3}\protected@file@percent }
+\newlabel{dm/continuous_dm/likelihood}{{1.4.3}{52}{Entrenamiento basado en verosimilitud}{subsection.1.4.3}{}}
+\newlabel{teo:dm_likelihood}{{1.5}{52}{}{teo.1.5}{}}
+\newlabel{eq:likelihood_sde}{{1.4.15}{52}{}{equation.1.4.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.26}{\ignorespaces Transformación de una distribución de imágenes en otra utilizando una CycleGan. Imagen obtenida desde \blx@tocontentsinit {0}\cite {zhu2020unpairedimagetoimagetranslationusing}.}}{53}{figure.caption.67}\protected@file@percent }
+\newlabel{fig:dm/cyclegan}{{1.26}{53}{Transformación de una distribución de imágenes en otra utilizando una CycleGan. Imagen obtenida desde \cite {zhu2020unpairedimagetoimagetranslationusing}}{figure.caption.67}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.4.4}Limitaciones de los modelos de difusión}{53}{subsection.1.4.4}\protected@file@percent }
+\newlabel{dm/continuous_dm/limitations}{{1.4.4}{53}{Limitaciones de los modelos de difusión}{subsection.1.4.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Limitación en las transformaciones}{53}{section*.66}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Convergencia asintótica a la distribución a priori}{53}{section*.68}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1.27}{\ignorespaces Efecto de simular el proceso de difusión por un tiempo demasiado corto. Al no aproximar bien la distribución $p_{\operatorname  {prior}}$ en $x_T$, el proceso reverso no podrá generar muestras coherentes con la distribución $p_{\operatorname  {data}}$. Imagen obtenida desde \blx@tocontentsinit {0}\cite {debortoli2023diffusionschrodingerbridgeapplications}.}}{54}{figure.caption.69}\protected@file@percent }
+\newlabel{fig:dm/short_time}{{1.27}{54}{Efecto de simular el proceso de difusión por un tiempo demasiado corto. Al no aproximar bien la distribución $\pprior $ en $x_T$, el proceso reverso no podrá generar muestras coherentes con la distribución $\ptrue $. Imagen obtenida desde \cite {debortoli2023diffusionschrodingerbridgeapplications}}{figure.caption.69}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1.28}{\ignorespaces Efectos de inyectar un mismo ruido sobre imágenes de distinta resolución. Se observa que para imágenes más grandes, es necesario aumentar el nivel de ruido. Imagen obtenida desde \blx@tocontentsinit {0}\cite {chen2023importancenoiseschedulingdiffusion}.}}{54}{figure.caption.71}\protected@file@percent }
+\newlabel{fig:dm/noise_resolution}{{1.28}{54}{Efectos de inyectar un mismo ruido sobre imágenes de distinta resolución. Se observa que para imágenes más grandes, es necesario aumentar el nivel de ruido. Imagen obtenida desde \cite {chen2023importancenoiseschedulingdiffusion}}{figure.caption.71}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sensibilidad a la elección de la SDE}{54}{section*.70}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Dificultad en la interpretabilidad}{54}{section*.72}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Complejidad computacional}{54}{section*.73}\protected@file@percent }
+\@setckpt{chapters/dm}{
+\setcounter{page}{56}
+\setcounter{equation}{15}
+\setcounter{enumi}{4}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{31}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{1}
+\setcounter{section}{4}
+\setcounter{subsection}{4}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{28}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{167}
+\setcounter{maxnames}{3}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{4}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{2}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{blx@maxsection}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{section@level}{4}
+\setcounter{Item}{4}
+\setcounter{Hfootnote}{31}
+\setcounter{bookmark@seq@number}{6}
+\setcounter{float@type}{8}
+\setcounter{algorithm}{7}
+\setcounter{ALG@line}{8}
+\setcounter{ALG@rem}{0}
+\setcounter{ALG@nested}{0}
+\setcounter{ALG@Lnr}{2}
+\setcounter{ALG@blocknr}{10}
+\setcounter{ALG@storecount}{0}
+\setcounter{ALG@tmpcounter}{0}
+\setcounter{defn}{3}
+\setcounter{teo}{5}
+\setcounter{prop}{20}
+\setcounter{cor}{0}
+}

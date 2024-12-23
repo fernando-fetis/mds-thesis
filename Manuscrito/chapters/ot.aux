@@ -1,0 +1,284 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\@writefile{toc}{\contentsline {chapter}{\numberline {2}Transporte óptimo entre distribuciones}{57}{chapter.2}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\newlabel{ot}{{2}{57}{Transporte óptimo entre distribuciones}{chapter.2}{}}
+\newlabel{eq:ot_motivation}{{2.0.1}{58}{Transporte óptimo entre distribuciones}{equation.2.0.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}Problema de Monge}{59}{section.2.1}\protected@file@percent }
+\newlabel{ot/monge}{{2.1}{59}{Problema de Monge}{section.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1.1}Formulación del problema}{59}{subsection.2.1.1}\protected@file@percent }
+\newlabel{ot/monge/formulation}{{2.1.1}{59}{Formulación del problema}{subsection.2.1.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Formulación discreta}{59}{section*.74}\protected@file@percent }
+\newlabel{eq:monge_no_measure}{{2.1.1}{59}{Formulación discreta}{equation.2.1.1}{}}
+\newlabel{eq:push_forward_discrete}{{2.1.2}{60}{Formulación discreta}{equation.2.1.2}{}}
+\newlabel{eq:monge_discrete}{{2.1.3}{60}{problema de Monge, versión discreta}{equation.2.1.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Formulación continua}{60}{section*.75}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Problema del transporte de tierra, donde el montículo rojo (con densidad de masa $\rho _1$) debe ser trasladado al montículo azul (con densidad de masa $\rho _2$). Para un mapa de transporte $T$, un volumen $A\subset \mathcal  {X}$ es transportado hacia el volumen $T(A)=\{T(x):x\in A\}\subset \mathcal  {Y}$. Inversamente, un volumen $B\subset \mathcal  {Y}$ es formado por la tierra proveniente de $T^{-1}(B)=\{x\in A:T(x)\in B\}\subset \mathcal  {X}$. Notar que la masa de un volumen $A\subset \mathcal  {X}$ se puede calcular mediante $m_1(A)=\DOTSI \intop \ilimits@ _A \rho _1(x)\,\operatorname  {d}\!x$ (análogo para $\mathcal  {Y}$). Esta figura se puede encontrar en el archivo \texttt  {earth\_mover.ipynb}.}}{61}{figure.caption.76}\protected@file@percent }
+\newlabel{fig:ot/earth_mover}{{2.1}{61}{Problema del transporte de tierra, donde el montículo rojo (con densidad de masa $\rho _1$) debe ser trasladado al montículo azul (con densidad de masa $\rho _2$). Para un mapa de transporte $T$, un volumen $A\subset \xspace $ es transportado hacia el volumen $T(A)=\{T(x):x\in A\}\subset \yspace $. Inversamente, un volumen $B\subset \yspace $ es formado por la tierra proveniente de $T^{-1}(B)=\{x\in A:T(x)\in B\}\subset \xspace $. Notar que la masa de un volumen $A\subset \xspace $ se puede calcular mediante $m_1(A)=\int _A \rho _1(x)\d x$ (análogo para $\yspace $). Esta figura se puede encontrar en el archivo \texttt {earth\_mover.ipynb}}{figure.caption.76}{}}
+\newlabel{eq:push_forward_r2}{{2.1.4}{61}{Formulación continua}{equation.2.1.4}{}}
+\newlabel{eq:monge_earth_mass}{{2.1.5}{61}{Formulación continua}{equation.2.1.5}{}}
+\newlabel{eq:monge_continuous}{{2.1.6}{62}{problema de Monge, versión continua}{equation.2.1.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}Relajación de Kantorovich}{62}{section.2.2}\protected@file@percent }
+\newlabel{ot/kantorovich}{{2.2}{62}{Relajación de Kantorovich}{section.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.1}Formulación primal}{62}{subsection.2.2.1}\protected@file@percent }
+\newlabel{ot/kantorovich/primal}{{2.2.1}{62}{Formulación primal}{subsection.2.2.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Problema discreto}{63}{section*.77}\protected@file@percent }
+\newlabel{eq:kantorovich_discrete}{{2.2.1}{63}{problema de Kantorovich, caso discreto}{equation.2.2.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces (Arriba) histogramas discretos (no normalizados) asociados a las medidas $\mu $ y $\nu $ respectivamente, donde $|\mathcal  {X}|=5$ y $|\mathcal  {Y}|=7$. (Abajo) solución (normalizada) para el problema de Kantorovich entre las dos distribuciones discretas. El código de esta simulación se encuentra en el archivo \texttt  {kantorovich.ipynb}.}}{64}{figure.caption.78}\protected@file@percent }
+\newlabel{fig:ot/kantorovich_discrete_example}{{2.2}{64}{(Arriba) histogramas discretos (no normalizados) asociados a las medidas $\mu $ y $\nu $ respectivamente, donde $|\xspace |=5$ y $|\yspace |=7$. (Abajo) solución (normalizada) para el problema de Kantorovich entre las dos distribuciones discretas. El código de esta simulación se encuentra en el archivo \texttt {kantorovich.ipynb}}{figure.caption.78}{}}
+\newlabel{eq:discrete_couplings_vectorial_form}{{2.2.2}{64}{Problema discreto}{equation.2.2.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Polítopo $\Pi _d(\mu ,\nu )$ representado en el plano por un conjunto $U(a,b)$ de vectores de transporte, donde la matriz de costo $C$ es representado por un vector $M_{XY}$. El costo de transporte $\left \langle C,\,P\right \rangle _F = M_{XY}^\top P$ aumenta al moverse en la dirección del vector de costo $M_{XY}$, por lo que para minimizar el costo de transporte se busca el elemento $P\in U(a,b)$ que más pueda avanzar en el sentido contrario al vector de costo $M_{XY}$ sin salirse del polítopo $U(a,b)$, lo cual se consigue en el vértice $P^*$. Notar que en este caso el minimizador del problema de transporte es único. En cambio, si el vector de costo $M_{XY}$ tuviese la inclinación precisa para ser ortogonal a alguna de las facetas que define el polítopo, entonces podrían existir infinitas soluciones. Imagen adaptada desde \blx@tocontentsinit {0}\cite {cuturi2023learning}.}}{65}{figure.caption.79}\protected@file@percent }
+\newlabel{fig:ot/polytope}{{2.3}{65}{Polítopo $\Pi _d(\mu ,\nu )$ representado en el plano por un conjunto $U(a,b)$ de vectores de transporte, donde la matriz de costo $C$ es representado por un vector $M_{XY}$. El costo de transporte $\dotproduct {C}{P}_F = M_{XY}^\top P$ aumenta al moverse en la dirección del vector de costo $M_{XY}$, por lo que para minimizar el costo de transporte se busca el elemento $P\in U(a,b)$ que más pueda avanzar en el sentido contrario al vector de costo $M_{XY}$ sin salirse del polítopo $U(a,b)$, lo cual se consigue en el vértice $P^*$. Notar que en este caso el minimizador del problema de transporte es único. En cambio, si el vector de costo $M_{XY}$ tuviese la inclinación precisa para ser ortogonal a alguna de las facetas que define el polítopo, entonces podrían existir infinitas soluciones. Imagen adaptada desde \cite {cuturi2023learning}}{figure.caption.79}{}}
+\newlabel{prop:monge_kantorovich_discrete_inequality}{{2.1}{65}{}{prop.2.1}{}}
+\newlabel{eq:deterministic_plan}{{2.2.3}{65}{Problema discreto}{equation.2.2.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.4}{\ignorespaces Plan de transporte determinista inducido por un mapa de Monge $T^*:\mathcal  {X}\to \mathcal  {Y}$ definido como $T^*(x_5)=T^*(x_6)=y_1,\,T^*(x_2)=y_2,\,T^*(x_1)=T^*(x_4)=y_3,\,T^*(x_3)=y_4$. Notar que la medida producto $\pi ^{T^*}\in \mathcal  {M}_+^1\left (\mathcal  {X}\times \mathcal  {Y}\right )$ asociada a este plan de transporte puede verse como la medida push-forward inducida por $\mu $ a través del mapa $x\in \mathcal  {X}\DOTSB \mapstochar \rightarrow (x,T(x))\in \mathcal  {X}\times \mathcal  {Y}$. Esta observación será importante en la formulación continua al enunciar el \autoref {teo:brenier}. La imagen se encuentra en el archivo \texttt  {deterministic\_plan.ipynb}.}}{66}{figure.caption.80}\protected@file@percent }
+\newlabel{fig:ot/deterministic_plan}{{2.4}{66}{Plan de transporte determinista inducido por un mapa de Monge $T^*:\xspace \to \yspace $ definido como $T^*(x_5)=T^*(x_6)=y_1,\,T^*(x_2)=y_2,\,T^*(x_1)=T^*(x_4)=y_3,\,T^*(x_3)=y_4$. Notar que la medida producto $\pi ^{T^*}\in \probmeasure {\xspace \times \yspace }$ asociada a este plan de transporte puede verse como la medida push-forward inducida por $\mu $ a través del mapa $x\in \xspace \mapsto (x,T(x))\in \xspace \times \yspace $. Esta observación será importante en la formulación continua al enunciar el \autoref {teo:brenier}. La imagen se encuentra en el archivo \texttt {deterministic\_plan.ipynb}}{figure.caption.80}{}}
+\newlabel{prop:matching_existence}{{2.2}{67}{}{prop.2.2}{}}
+\newlabel{eq:coupling_identification}{{2.2.4}{67}{Problema discreto}{equation.2.2.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Problema continuo}{67}{section*.81}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.5}{\ignorespaces Ejemplos de couplings entre las medidas de probabilidad $\alpha $ y $\beta $ cuando se considera un marco discreto (izquierda), semidiscreto (centro) o continuo (derecha). Imagen obtenida desde \blx@tocontentsinit {0}\cite {peyré2020computational}.}}{68}{figure.caption.82}\protected@file@percent }
+\newlabel{fig:ot/type_of_couplings}{{2.5}{68}{Ejemplos de couplings entre las medidas de probabilidad $\alpha $ y $\beta $ cuando se considera un marco discreto (izquierda), semidiscreto (centro) o continuo (derecha). Imagen obtenida desde \cite {peyré2020computational}}{figure.caption.82}{}}
+\newlabel{eq:kantorovich_continuous}{{2.2.5}{68}{problema de Kantorovich, caso continuo}{equation.2.2.5}{}}
+\newlabel{eq:continuous_coupling}{{2.2.6}{68}{problema de Kantorovich, caso continuo}{equation.2.2.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.6}{\ignorespaces (Arriba) gráficos de funciones de densidad asociadas a las medidas $\mu $ y $\nu $ respectivamente. (Abajo) solución para el problema de Kantorovich entre ambas medidas. Se observa como toda la masa de $\pi ^*$ se concentra en una curva, la cual corresponde al gráfico del mapa de Monge para este mismo problema (ver \autoref {teo:brenier}). El código de esta simulación se encuentra en el archivo \texttt  {kantorovich.ipynb}.}}{69}{figure.caption.83}\protected@file@percent }
+\newlabel{fig:ot/kantorovich_continuous_example}{{2.6}{69}{(Arriba) gráficos de funciones de densidad asociadas a las medidas $\mu $ y $\nu $ respectivamente. (Abajo) solución para el problema de Kantorovich entre ambas medidas. Se observa como toda la masa de $\pi ^*$ se concentra en una curva, la cual corresponde al gráfico del mapa de Monge para este mismo problema (ver \autoref {teo:brenier}). El código de esta simulación se encuentra en el archivo \texttt {kantorovich.ipynb}}{figure.caption.83}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.7}{\ignorespaces Plan de Kantorovich para distintos pares de medidas $\alpha $ y $\beta $. (Arriba) las flechas indican cómo se debe repartir la masa de $\alpha $ en $\beta $ para el transporte óptimo en el sentido de Kantorovich. En el sentido de Monge, solo el 1º caso tiene solución ya que los otros casos requieren división de masa. (Abajo) coupling óptimo del problema. Imagen obtenida desde \blx@tocontentsinit {0}\cite {peyré2020computational}.}}{70}{figure.caption.84}\protected@file@percent }
+\newlabel{fig:ot/optimal_coupling1}{{2.7}{70}{Plan de Kantorovich para distintos pares de medidas $\alpha $ y $\beta $. (Arriba) las flechas indican cómo se debe repartir la masa de $\alpha $ en $\beta $ para el transporte óptimo en el sentido de Kantorovich. En el sentido de Monge, solo el 1º caso tiene solución ya que los otros casos requieren división de masa. (Abajo) coupling óptimo del problema. Imagen obtenida desde \cite {peyré2020computational}}{figure.caption.84}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.8}{\ignorespaces Solución para el problema de Kantorovich entre dos medidas $\alpha $ y $\beta $. (Izquierda) coupling óptimo entre dos medidas continuas, donde la intensidad del color negro en la curva indica la densidad de masa del \textit  {coupling} óptimo $\pi $ en cada punto del plano $\mathcal  {X}\times \mathcal  {Y}$. Notar que, en este caso, el plan de Kantorovich está soportado precisamente en el gráfico del mapa de Monge. (Derecha) plan de Kantorovich $\pi $ entre dos medidas discretas, donde el radio de cada círculo es proporcional a la masa asignada a cada átomo de $\mathcal  {X}\times \mathcal  {Y}$. Imagen obtenida desde \blx@tocontentsinit {0}\cite {peyré2020computational}.}}{70}{figure.caption.85}\protected@file@percent }
+\newlabel{fig:ot/optimal_coupling2}{{2.8}{70}{Solución para el problema de Kantorovich entre dos medidas $\alpha $ y $\beta $. (Izquierda) coupling óptimo entre dos medidas continuas, donde la intensidad del color negro en la curva indica la densidad de masa del \textit {coupling} óptimo $\pi $ en cada punto del plano $\xspace \times \yspace $. Notar que, en este caso, el plan de Kantorovich está soportado precisamente en el gráfico del mapa de Monge. (Derecha) plan de Kantorovich $\pi $ entre dos medidas discretas, donde el radio de cada círculo es proporcional a la masa asignada a cada átomo de $\xspace \times \yspace $. Imagen obtenida desde \cite {peyré2020computational}}{figure.caption.85}{}}
+\newlabel{prop:monge_kantorovich_ineq_continuous}{{2.4}{71}{}{prop.2.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.2}Formulación dual}{72}{subsection.2.2.2}\protected@file@percent }
+\newlabel{ot/kantorovich/dual}{{2.2.2}{72}{Formulación dual}{subsection.2.2.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Problema dual discreto}{72}{section*.86}\protected@file@percent }
+\newlabel{prop:duality_discrete}{{2.6}{72}{dualidad fuerte para Kantorovich, caso discreto}{prop.2.6}{}}
+\newlabel{eq:kantorovich_dual_discrete}{{2.2.7}{72}{dualidad fuerte para Kantorovich, caso discreto}{equation.2.2.7}{}}
+\newlabel{eq:kantorovich_strong_duality_discrete}{{2.2.8}{72}{dualidad fuerte para Kantorovich, caso discreto}{equation.2.2.8}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Problema dual continuo}{73}{section*.87}\protected@file@percent }
+\newlabel{teo:kantorovich_dual_continuous}{{2.1}{73}{dualidad fuerte para Kantorovich, caso continuo}{teo.2.1}{}}
+\newlabel{eq:kantorovich_dual_continuous}{{2.2.9}{73}{dualidad fuerte para Kantorovich, caso continuo}{equation.2.2.9}{}}
+\newlabel{cor:supp_slackness}{{2.2}{74}{}{cor.2.2}{}}
+\newlabel{eq:subdiferential}{{2.2.10}{74}{subdiferencial}{equation.2.2.10}{}}
+\newlabel{defn:legendre}{{2.7}{74}{transformada de Legendre}{defn.2.7}{}}
+\newlabel{prop:subdiff_legendre}{{2.8}{74}{}{prop.2.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces La función $f$ no es diferenciable en $x=1$, por lo que su conjunto de subgradientes no será un único punto. Las rectas $g_i,\,i\in \{1,2,3,4\}$ son tangentes a $f$ en $(1,1)$, por lo que sus pendientes corresponden a subgradientes de $f$. Esta imagen se encuentra en el archivo \texttt  {subdifferential.ipynb}.}}{75}{figure.caption.88}\protected@file@percent }
+\newlabel{fig:ot/subdifferential}{{2.9}{75}{La función $f$ no es diferenciable en $x=1$, por lo que su conjunto de subgradientes no será un único punto. Las rectas $g_i,\,i\in \{1,2,3,4\}$ son tangentes a $f$ en $(1,1)$, por lo que sus pendientes corresponden a subgradientes de $f$. Esta imagen se encuentra en el archivo \texttt {subdifferential.ipynb}}{figure.caption.88}{}}
+\newlabel{teo:brenier}{{2.2}{75}{Brenier}{teo.2.2}{}}
+\newlabel{eq:brenier_dual}{{2.2.11}{76}{Problema dual continuo}{equation.2.2.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2.3}Casos particulares en $\mathbb  {R}^d$}{77}{subsection.2.2.3}\protected@file@percent }
+\newlabel{ot/kantorovich/rd}{{2.2.3}{77}{Casos particulares en \texorpdfstring {$\R ^d$}{Rd}}{subsection.2.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Transporte óptimo unidimensional}{77}{section*.89}\protected@file@percent }
+\newlabel{teo:kantorovich_r}{{2.3}{77}{}{teo.2.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Transporte óptimo entre distribuciones gaussianas}{78}{section*.90}\protected@file@percent }
+\newlabel{teo:frechet_gaussian}{{2.5}{78}{}{teo.2.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.10}{\ignorespaces Interpolación entre dos curvas gaussianas utilizando la solución cerrada del \autoref {teo:frechet_gaussian}. El código de esta simulación se encuentra en el archivo \texttt  {distr\_interpolation.ipynb}.}}{79}{figure.caption.91}\protected@file@percent }
+\newlabel{fig:ot/gaussian_interpolation}{{2.10}{79}{Interpolación entre dos curvas gaussianas utilizando la solución cerrada del \autoref {teo:frechet_gaussian}. El código de esta simulación se encuentra en el archivo \texttt {distr\_interpolation.ipynb}}{figure.caption.91}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Mapa de Monge a partir de un potencial de Kantorovich}{79}{section*.92}\protected@file@percent }
+\newlabel{defn:c_transform}{{2.10}{80}{$c$-transformadas y concavidad}{defn.2.10}{}}
+\newlabel{eq:c_concave_actualization}{{2.2.12}{80}{Mapa de Monge a partir de un potencial de Kantorovich}{equation.2.2.12}{}}
+\newlabel{teo:dual_c_transform}{{2.6}{80}{formulación dual mediante $c$-transformadas}{teo.2.6}{}}
+\newlabel{teo:gangbo_mccann}{{2.7}{80}{Gangbo-McCann}{teo.2.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}Formulación dinámica}{81}{section.2.3}\protected@file@percent }
+\newlabel{ot/dynamic}{{2.3}{81}{Formulación dinámica}{section.2.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.1}Distancias de Wasserstein}{81}{subsection.2.3.1}\protected@file@percent }
+\newlabel{ot/dynamic/wasserstein}{{2.3.1}{81}{Distancias de Wasserstein}{subsection.2.3.1}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Interpolación y baricentros en $\mathcal  {M}_+^1\left (\mathcal  {X}\right )$}{82}{section*.93}\protected@file@percent }
+\newlabel{teo:wasserstein_geodesic}{{2.9}{83}{$\probmeasurep {\xspace }$ es un espacio geodésico}{teo.2.9}{}}
+\newlabel{eq:mccann_interpolation}{{2.3.1}{83}{Interpolación y baricentros en $\probmeasure {\xspace }$}{equation.2.3.1}{}}
+\newlabel{eq:barycenter}{{2.3.2}{83}{Interpolación y baricentros en $\probmeasure {\xspace }$}{equation.2.3.2}{}}
+\newlabel{eq:barycenter_rd}{{2.3.3}{83}{Interpolación y baricentros en $\probmeasure {\xspace }$}{equation.2.3.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.11}{\ignorespaces Interpolación en el espacio de Wasserstein (izquierda) y en el espacio de las muestras (derecha). Se observa interpolando en el espacio de Wasserstein se obtienen geodésicas más naturales que al hacerlo en el espacio observable. Imagen obtenida desde \blx@tocontentsinit {0}\cite {kolouri2017optimal}.}}{84}{figure.caption.94}\protected@file@percent }
+\newlabel{fig:ot/geodesic_wasserstein}{{2.11}{84}{Interpolación en el espacio de Wasserstein (izquierda) y en el espacio de las muestras (derecha). Se observa interpolando en el espacio de Wasserstein se obtienen geodésicas más naturales que al hacerlo en el espacio observable. Imagen obtenida desde \cite {kolouri2017optimal}}{figure.caption.94}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.12}{\ignorespaces Interpolación entre dos mezclas gaussianas. En este caso, el mapa de transporte no tiene solución en forma cerrada y debe ser encontrado de forma numérica. El código se encuentra en el archivo \texttt  {distr\_interpolation.ipynb}.}}{85}{figure.caption.95}\protected@file@percent }
+\newlabel{fig:ot/gmm_interpolation}{{2.12}{85}{Interpolación entre dos mezclas gaussianas. En este caso, el mapa de transporte no tiene solución en forma cerrada y debe ser encontrado de forma numérica. El código se encuentra en el archivo \texttt {distr\_interpolation.ipynb}}{figure.caption.95}{}}
+\newlabel{eq:discrete_barycenter}{{2.3.4}{85}{Interpolación y baricentros en $\probmeasure {\xspace }$}{equation.2.3.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Convergencia débil en $\mathcal  {M}_+^1\left (\mathcal  {X}\right )$}{85}{section*.97}\protected@file@percent }
+\newlabel{defn:measure_weak_convergence}{{2.14}{85}{convergencia débil de medidas}{defn.2.14}{}}
+\newlabel{eq:measure_weak_convergence}{{2.14}{85}{convergencia débil de medidas}{defn.2.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.13}{\ignorespaces Interpolación baricéntrica entre 4 figuras en el plano (una figura en cada esquina). Cada imagen representa un vector de peso $\lambda \in \Sigma _4$ diferente, el cual indica el nivel de importancia de cada figura en la interpolación. Imagen obtenida desde \blx@tocontentsinit {0}\cite {peyré2020computational}.}}{86}{figure.caption.96}\protected@file@percent }
+\newlabel{fig:ot/barycenter}{{2.13}{86}{Interpolación baricéntrica entre 4 figuras en el plano (una figura en cada esquina). Cada imagen representa un vector de peso $\lambda \in \Sigma _4$ diferente, el cual indica el nivel de importancia de cada figura en la interpolación. Imagen obtenida desde \cite {peyré2020computational}}{figure.caption.96}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Comparación con otras funciones de pérdida}{87}{section*.98}\protected@file@percent }
+\newlabel{defn:f_div_discrete}{{2.15}{87}{$f$-divergencia, caso discreto}{defn.2.15}{}}
+\newlabel{defn:f_div}{{2.16}{88}{$f$-divergencia, caso continuo}{defn.2.16}{}}
+\newlabel{eq:f_div}{{2.3.5}{88}{$f$-divergencia, caso continuo}{equation.2.3.5}{}}
+\newlabel{defn:tv}{{2.17}{88}{variación total}{defn.2.17}{}}
+\@writefile{toc}{\contentsline {subsubsection}{$\mathcal  {W}_1$ como función de pérdida en redes neuronales}{90}{section*.99}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.14}{\ignorespaces Imágenes generadas por una Wasserstein GAN en el dataset MNIST. La calidad de las imágenes es inferior a las generadas en el \autoref {dm} debido a que se entrenó el modelo neuronal menos tiempo. En el archivo \texttt  {wgan.ipynb} hay una implementación minimal de este modelo generativo.}}{91}{figure.caption.100}\protected@file@percent }
+\newlabel{fig:ot/wgan}{{2.14}{91}{Imágenes generadas por una Wasserstein GAN en el dataset MNIST. La calidad de las imágenes es inferior a las generadas en el \autoref {dm} debido a que se entrenó el modelo neuronal menos tiempo. En el archivo \texttt {wgan.ipynb} hay una implementación minimal de este modelo generativo}{figure.caption.100}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.2}Interpretación como problema de control óptimo estocástico}{91}{subsection.2.3.2}\protected@file@percent }
+\newlabel{ot/dynamic/optimal_control}{{2.3.2}{91}{Interpretación como problema de control óptimo estocástico}{subsection.2.3.2}{}}
+\newlabel{eq:least_squares_measure}{{2.3.6}{92}{Interpretación como problema de control óptimo estocástico}{equation.2.3.6}{}}
+\newlabel{eq:dynamic_kantorovich_1}{{2.3.7}{92}{Interpretación como problema de control óptimo estocástico}{equation.2.3.7}{}}
+\newlabel{eq:dynamic_kantorovich_2}{{2.3.8}{92}{Interpretación como problema de control óptimo estocástico}{equation.2.3.8}{}}
+\newlabel{eq:dynamic_kantorovich_3}{{2.3.9}{92}{Interpretación como problema de control óptimo estocástico}{equation.2.3.9}{}}
+\newlabel{eq:dynamic_kantorovich_4}{{2.3.10}{93}{Interpretación como problema de control óptimo estocástico}{equation.2.3.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.3}Formulación de Benamou-Brenier}{93}{subsection.2.3.3}\protected@file@percent }
+\newlabel{ot/dynamic/benamou_brenier}{{2.3.3}{93}{Formulación de Benamou-Brenier}{subsection.2.3.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Ecuación de transporte}{93}{section*.101}\protected@file@percent }
+\newlabel{teo:gauss}{{2.13}{93}{divergencia de Gauss}{teo.2.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.15}{\ignorespaces campo vectorial $\vec  {F}$ en $\mathbb  {R}^3$ atravesando una superficie cerrada $\partial \Omega \subset \mathbb  {R}^3$. El flujo total que pasa a través de $\partial \Omega $ (definido por la integral de superficie) es precisamente la cantidad de fluido se está \textit  {creando} o \textit  {perdiendo} en cada punto del espacio dentro de $\Omega $, lo cual viene dado por el operador divergencia. De esta forma, sumando todas estas divergencias infinitesimales se obtiene el flujo neto a través de $\partial \Omega $. Esta imagen se encuentra en el archivo \texttt  {surface\_integral.ipynb}.}}{94}{figure.caption.102}\protected@file@percent }
+\newlabel{fig:ot/surface_integral}{{2.15}{94}{campo vectorial $\vec {F}$ en $\R ^3$ atravesando una superficie cerrada $\partial \Omega \subset \R ^3$. El flujo total que pasa a través de $\partial \Omega $ (definido por la integral de superficie) es precisamente la cantidad de fluido se está \textit {creando} o \textit {perdiendo} en cada punto del espacio dentro de $\Omega $, lo cual viene dado por el operador divergencia. De esta forma, sumando todas estas divergencias infinitesimales se obtiene el flujo neto a través de $\partial \Omega $. Esta imagen se encuentra en el archivo \texttt {surface\_integral.ipynb}}{figure.caption.102}{}}
+\newlabel{eq:transport_eq}{{2.3.11}{94}{Ecuación de transporte}{equation.2.3.11}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Interpretación fluidodinámica del transporte óptimo}{94}{section*.103}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2.16}{\ignorespaces Simulación del problema de Benamou-Brenier para dos distribuciones. Se observa la interpolación entre ambas distribuciones para distintos tiempos. El código se encuentra en el archivo \texttt  {benamou\_brenier.ipynb}.}}{95}{figure.caption.104}\protected@file@percent }
+\newlabel{fig:ot/benamou_brenier}{{2.16}{95}{Simulación del problema de Benamou-Brenier para dos distribuciones. Se observa la interpolación entre ambas distribuciones para distintos tiempos. El código se encuentra en el archivo \texttt {benamou\_brenier.ipynb}}{figure.caption.104}{}}
+\newlabel{eq:benamou_brenier}{{2.3.12}{95}{Interpretación fluidodinámica del transporte óptimo}{equation.2.3.12}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Condiciones de optimalidad para Benamou-Brenier}{95}{section*.105}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.4}Modelos de difusión como mapa de transporte óptimo}{97}{subsection.2.3.4}\protected@file@percent }
+\newlabel{ot/dynamic/dm}{{2.3.4}{97}{Modelos de difusión como mapa de transporte óptimo}{subsection.2.3.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2.17}{\ignorespaces Trayectorias seguidas por las muestras de dos distribuciones iniciales $x\sim \mu $ (una en cada gráfico) cuando la distribución de llegada $E_\mu (x)$ es una variable aleatoria gaussiana estándar. Imagen obtenida desde \blx@tocontentsinit {0}\cite {khrulkov2022understandingddpmlatentcodes}.}}{98}{figure.caption.106}\protected@file@percent }
+\newlabel{fig:ot/dm_ot}{{2.17}{98}{Trayectorias seguidas por las muestras de dos distribuciones iniciales $x\sim \mu $ (una en cada gráfico) cuando la distribución de llegada $E_\mu (x)$ es una variable aleatoria gaussiana estándar. Imagen obtenida desde \cite {khrulkov2022understandingddpmlatentcodes}}{figure.caption.106}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3.5}Limitaciones del transporte óptimo dinámico}{98}{subsection.2.3.5}\protected@file@percent }
+\@setckpt{chapters/ot}{
+\setcounter{page}{100}
+\setcounter{equation}{12}
+\setcounter{enumi}{4}
+\setcounter{enumii}{0}
+\setcounter{enumiii}{0}
+\setcounter{enumiv}{0}
+\setcounter{footnote}{28}
+\setcounter{mpfootnote}{0}
+\setcounter{part}{0}
+\setcounter{chapter}{2}
+\setcounter{section}{3}
+\setcounter{subsection}{5}
+\setcounter{subsubsection}{0}
+\setcounter{paragraph}{0}
+\setcounter{subparagraph}{0}
+\setcounter{figure}{17}
+\setcounter{table}{0}
+\setcounter{parentequation}{0}
+\setcounter{caption@flags}{2}
+\setcounter{continuedfloat}{0}
+\setcounter{tabx@nest}{0}
+\setcounter{listtotal}{0}
+\setcounter{listcount}{0}
+\setcounter{liststart}{0}
+\setcounter{liststop}{0}
+\setcounter{citecount}{0}
+\setcounter{citetotal}{0}
+\setcounter{multicitecount}{0}
+\setcounter{multicitetotal}{0}
+\setcounter{instcount}{205}
+\setcounter{maxnames}{3}
+\setcounter{minnames}{1}
+\setcounter{maxitems}{3}
+\setcounter{minitems}{1}
+\setcounter{citecounter}{0}
+\setcounter{maxcitecounter}{0}
+\setcounter{savedcitecounter}{0}
+\setcounter{uniquelist}{0}
+\setcounter{uniquename}{0}
+\setcounter{refsection}{0}
+\setcounter{refsegment}{0}
+\setcounter{maxextratitle}{0}
+\setcounter{maxextratitleyear}{0}
+\setcounter{maxextraname}{4}
+\setcounter{maxextradate}{0}
+\setcounter{maxextraalpha}{2}
+\setcounter{abbrvpenalty}{50}
+\setcounter{highnamepenalty}{50}
+\setcounter{lownamepenalty}{25}
+\setcounter{maxparens}{3}
+\setcounter{parenlevel}{0}
+\setcounter{blx@maxsection}{0}
+\setcounter{mincomprange}{10}
+\setcounter{maxcomprange}{100000}
+\setcounter{mincompwidth}{1}
+\setcounter{afterword}{0}
+\setcounter{savedafterword}{0}
+\setcounter{annotator}{0}
+\setcounter{savedannotator}{0}
+\setcounter{author}{0}
+\setcounter{savedauthor}{0}
+\setcounter{bookauthor}{0}
+\setcounter{savedbookauthor}{0}
+\setcounter{commentator}{0}
+\setcounter{savedcommentator}{0}
+\setcounter{editor}{0}
+\setcounter{savededitor}{0}
+\setcounter{editora}{0}
+\setcounter{savededitora}{0}
+\setcounter{editorb}{0}
+\setcounter{savededitorb}{0}
+\setcounter{editorc}{0}
+\setcounter{savededitorc}{0}
+\setcounter{foreword}{0}
+\setcounter{savedforeword}{0}
+\setcounter{holder}{0}
+\setcounter{savedholder}{0}
+\setcounter{introduction}{0}
+\setcounter{savedintroduction}{0}
+\setcounter{namea}{0}
+\setcounter{savednamea}{0}
+\setcounter{nameb}{0}
+\setcounter{savednameb}{0}
+\setcounter{namec}{0}
+\setcounter{savednamec}{0}
+\setcounter{translator}{0}
+\setcounter{savedtranslator}{0}
+\setcounter{shortauthor}{0}
+\setcounter{savedshortauthor}{0}
+\setcounter{shorteditor}{0}
+\setcounter{savedshorteditor}{0}
+\setcounter{labelname}{0}
+\setcounter{savedlabelname}{0}
+\setcounter{institution}{0}
+\setcounter{savedinstitution}{0}
+\setcounter{lista}{0}
+\setcounter{savedlista}{0}
+\setcounter{listb}{0}
+\setcounter{savedlistb}{0}
+\setcounter{listc}{0}
+\setcounter{savedlistc}{0}
+\setcounter{listd}{0}
+\setcounter{savedlistd}{0}
+\setcounter{liste}{0}
+\setcounter{savedliste}{0}
+\setcounter{listf}{0}
+\setcounter{savedlistf}{0}
+\setcounter{location}{0}
+\setcounter{savedlocation}{0}
+\setcounter{organization}{0}
+\setcounter{savedorganization}{0}
+\setcounter{origlocation}{0}
+\setcounter{savedoriglocation}{0}
+\setcounter{origpublisher}{0}
+\setcounter{savedorigpublisher}{0}
+\setcounter{publisher}{0}
+\setcounter{savedpublisher}{0}
+\setcounter{language}{0}
+\setcounter{savedlanguage}{0}
+\setcounter{origlanguage}{0}
+\setcounter{savedoriglanguage}{0}
+\setcounter{pageref}{0}
+\setcounter{savedpageref}{0}
+\setcounter{textcitecount}{0}
+\setcounter{textcitetotal}{0}
+\setcounter{textcitemaxnames}{0}
+\setcounter{biburlbigbreakpenalty}{100}
+\setcounter{biburlbreakpenalty}{200}
+\setcounter{biburlnumpenalty}{0}
+\setcounter{biburlucpenalty}{0}
+\setcounter{biburllcpenalty}{0}
+\setcounter{smartand}{1}
+\setcounter{bbx:relatedcount}{0}
+\setcounter{bbx:relatedtotal}{0}
+\setcounter{section@level}{2}
+\setcounter{Item}{4}
+\setcounter{Hfootnote}{59}
+\setcounter{bookmark@seq@number}{10}
+\setcounter{float@type}{8}
+\setcounter{algorithm}{7}
+\setcounter{ALG@line}{8}
+\setcounter{ALG@rem}{0}
+\setcounter{ALG@nested}{0}
+\setcounter{ALG@Lnr}{2}
+\setcounter{ALG@blocknr}{10}
+\setcounter{ALG@storecount}{0}
+\setcounter{ALG@tmpcounter}{0}
+\setcounter{defn}{17}
+\setcounter{teo}{14}
+\setcounter{prop}{11}
+\setcounter{cor}{5}
+}
