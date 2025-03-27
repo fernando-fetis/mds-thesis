@@ -7,6 +7,8 @@
 \usepackage{fancyhdr}
 \usepackage{parskip}
 \usepackage{emptypage}
+\usepackage{xcolor}
+\usepackage{ragged2e}
 
 % Matemática:
 \usepackage{amsmath}
@@ -17,6 +19,8 @@
 % Figuras:
 \usepackage{graphicx}
 \usepackage[labelfont=bf]{caption}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, shapes.multipart}
 
 % Bibliografía y enlaces:
 \usepackage[style=apa]{biblatex}
@@ -27,5 +31,8 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 
-% Temporal:
-\usepackage{xcolor}
+\addbibresource{others/references.bib}
+\setbeamercovered{transparent}
+
+\usetheme{metropolis}
+\metroset{block=fill}
