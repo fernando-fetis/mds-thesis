@@ -122,15 +122,15 @@
 \begin{frame}{Modelos de difusión | Formulación continua}
     \begin{itemize}
         \item<1> DDPM y DSM son discretizaciones de SDEs específicas.
-        \only<1>
-        {
-            \begin{equation*}
-                \begin{cases}
-                    \d x_t = \frac{1}{2}(1-\alpha(t))x_t \d t + \sqrt{1-\alpha(t)}\d w_t & \text{(DDPM)}\\
-                    \d x_t = \sqrt{\frac{\d}{\d t}\sigma^2(t)}\d w_t & \text{(DSM)}
-                \end{cases}
-            \end{equation*}
-        }
+              \only<1>
+              {
+                  \begin{equation*}
+                      \begin{cases}
+                          \d x_t = \frac{1}{2}(1-\alpha(t))x_t \d t + \sqrt{1-\alpha(t)}\d w_t & \text{(DDPM)} \\
+                          \d x_t = \sqrt{\frac{\d}{\d t}\sigma^2(t)}\d w_t                     & \text{(DSM)}
+                      \end{cases}
+                  \end{equation*}
+              }
         \item<2> Se pueden usar diferentes solvers para el proceso backward durante la generación.
         \item<3> Existe un proceso determinista con las mismas distribuciones marginales que los procesos de difusión y denoising.
               \only<3>{\insertimage{dm/score_prob_flow.png}{0.9}{Imagen obtenida desde \cite{song2021scorebased}.}}
@@ -347,25 +347,26 @@
     \begin{block}{OT}
         El problema dual del problema de Kantorovich es
         \begin{equation*}
-            \sup_{\phi,\psi} \int_\xspace \phi(x) \d\mu(x) + \int_\yspace \psi(y) \d\nu(y)
+            \max_{\phi,\psi} \int_\xspace \phi(x) \d\mu(x) + \int_\yspace \psi(y) \d\nu(y)
             \quad\text{s.a } \phi(x)+\psi(y)\leq \norm{x-y}^2.
         \end{equation*}
     \end{block}
     \uncover<2>{
-    \begin{block}{SBP estático}
-        El problema dual del SBP estático es
-        \begin{equation*}
-            \sup_{\phi,\psi} \int_\xspace \phi(x) \d\mu(x) + \int_\yspace \psi(y) \d\nu(y) \fcolor{ \,-\, \sigma\int e^{\frac{\phi(x)+\psi(y)-\norm{x-y}^2}{\sigma}-1}\d\pi(x,y)}.
-        \end{equation*}
-        Además, la única solución del SBP estático es
-        \begin{equation*}
-            \d\pi(x,y) = e^{\frac{\phi(x)+\psi(y)-\norm{x-y}^2}{\sigma}-1}\d\mu(x)\d\nu(y)
-        \end{equation*}
-    \end{block}
+        \begin{block}{SBP estático}
+            El problema dual del SBP estático es
+            \begin{equation*}
+                \max_{\phi,\psi} \int_\xspace \phi(x) \d\mu(x) + \int_\yspace \psi(y) \d\nu(y) \fcolor{ \,-\, \sigma\int e^{\frac{\phi(x)+\psi(y)-\norm{x-y}^2}{\sigma}-1}\d\pi(x,y)}.
+            \end{equation*}
+            Además, la única solución del SBP estático es
+            \begin{equation*}
+                \d\pi(x,y) = e^{\frac{\phi(x)+\psi(y)-\norm{x-y}^2}{\sigma}-1}\d\mu(x)\d\nu(y)
+            \end{equation*}
+        \end{block}
     }
 \end{frame}
 
 \begin{frame}{OT y SBP | Como problemas de control óptimo}
+    El problema de transporte óptimo se puede formular de forma dinámica:
     \begin{block}{OT dinámico (Benamou-Brenier)}
         \begin{equation*}
             \min_{v} \E{x}{\int_0^1 \frac{1}{2}\norm{v(x_t,t)}^2 \d t}
@@ -378,17 +379,17 @@
         Se puede sustituir la ODE por su ecuación de continuidad.
     \end{block}
     \uncover<2>{
-    \begin{block}{SBP dinámico}
-        \begin{equation*}
-            \min_{v} \E{x}{\int_0^1 \frac{1}{2}\norm{v(x_t,t)}^2 \d t}
-            \quad\text{sujeto a}\quad
-            \begin{cases}
-                \d x_t = v(x_t,t) \d t \fcolor{\,+\, \sigma\d w_t} \\
-                (x_0\sim\mu) \wedge (x_1\sim\nu),
-            \end{cases}
-        \end{equation*}
-        Se puede sustituir la SDE por su ecuación de Fokker-Planck.
-    \end{block}
+        \begin{block}{SBP dinámico}
+            \begin{equation*}
+                \min_{v} \E{x}{\int_0^1 \frac{1}{2}\norm{v(x_t,t)}^2 \d t}
+                \quad\text{sujeto a}\quad
+                \begin{cases}
+                    \d x_t = v(x_t,t) \d t \fcolor{\,+\, \sigma\d w_t} \\
+                    (x_0\sim\mu) \wedge (x_1\sim\nu),
+                \end{cases}
+            \end{equation*}
+            Se puede sustituir la SDE por su ecuación de Fokker-Planck.
+        \end{block}
     }
 \end{frame}
 
@@ -397,29 +398,28 @@
 \end{frame}
 
 \begin{frame}{OT y SBP | Como sistema de PDEs}
-    \begin{itemize}
-        \item<1> Se pueden sustituir las dinámicas por PDEs que las caractericen.
-        \item<2> La optimalidad de los problemas de control también se puede caracterizar por PDEs.
-    \end{itemize}
     \uncover<3>{
-    \begin{block}{Caracterización de optimalidad para OT}
-        \begin{equation*}
-            \begin{cases}
-                \partial_t \rho + \nabla\cdot(\rho \nabla\lambda) = 0      & \text{(eq. continuidad)} \\
-                \partial_t \lambda + \frac{1}{2}\norm{\nabla\lambda}^2 = 0 & \text{(Hamilton-Jacobi)}
-            \end{cases}
-        \end{equation*}
-    \end{block}
+        La densidad óptima $\rho(x,t)$ y el control óptimo $v(x,t)=\nabla\lambda(x,t)$ cumplen el siguiente sistema de ecuaciones:
+        \begin{block}{Caracterización de optimalidad para OT}
+            \begin{equation*}
+                \begin{cases}
+                    \partial_t \rho + \nabla\cdot(\rho \nabla\lambda) = 0      & \text{(dinámica)}    \\
+                    \partial_t \lambda + \frac{1}{2}\norm{\nabla\lambda}^2 = 0 & \text{(optimalidad)}
+                \end{cases}
+            \end{equation*}
+            Con condiciones de borde $\rho(\cdot,0)\sim \mu$ y $\rho(\cdot,1)\sim \mu$.
+        \end{block}
     }
     \uncover<4>{
-    \begin{block}{Caracterización de optimalidad para SBP (sistema de Schrödinger)}
-        \begin{equation*}
-            \begin{cases}
-                \partial_t \rho + \nabla\cdot(\rho \nabla\lambda) \fcolor{\,-\,\frac{\sigma^2}{2}\Delta\rho}= 0          & \text{(Fokker-Planck)}           \\
-                \partial_t \lambda + \frac{1}{2}\norm{\nabla\lambda}^2 \fcolor{+\,\frac{\sigma^2}{2}\Delta\lambda} = 0 & \text{(Hamilton-Jacobi-Bellman)}
-            \end{cases}
-        \end{equation*}
-    \end{block}
+        \begin{block}{Caracterización de optimalidad para SBP (sistema de Schrödinger)}
+            \begin{equation*}
+                \begin{cases}
+                    \partial_t \rho + \nabla\cdot(\rho \nabla\lambda) \fcolor{\,-\,\frac{\sigma^2}{2}\Delta\rho}= 0        & \text{(dinámica)}    \\
+                    \partial_t \lambda + \frac{1}{2}\norm{\nabla\lambda}^2 \fcolor{+\,\frac{\sigma^2}{2}\Delta\lambda} = 0 & \text{(optimalidad)}
+                \end{cases}
+            \end{equation*}
+            Con condiciones de borde $\rho(\cdot,0)\sim \mu$ y $\rho(\cdot,1)\sim \mu$.
+        \end{block}
     }
 \end{frame}
 
